@@ -6,13 +6,67 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Meal Plan</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="./meal-script.js"></script>
 </head>
 <body>
-    <p>Hello I am testing</p>
+    <header>
+        <h1>My Meal Maps</h1>
+        <p>Slogan here</p>
+    </header>
+    <section id="profile">
+        <p>Profile</p>
+        <form action="">
+            <p>Gender</p>
+            <input type="text" name="gender" id ="gender">
+            <p>Height(m):</p>
+            <input type="text" name="height" id="height">
+            <p>Weight(kg):</p>
+            <input type="text" name="weight" id="weight">
+            <p>Ideal weight:</p>
+            <input type="text" name="ideal" id="ideal">
+            <p>Timeframe:</p>
+            <input type="range" name="timeframe" id="timeframe" value="50" min="0" max="100" oninput="timeOutput.value = timeframe.value">
+            <output  id="timeOutput"></output>
+            <p>Activity:</p>
+            <input type="range" name="activity" id="activity" value="2" min="1" max="4" oninput="activeOutput.value = activity.value">
+            <output  id="activeOutput"></output>
+            <br>
+            <button onclick="start()">Get Started!</button>
+        </form>
+    </section>
+    <section id="items">
+        <div class="tabs" onclick="changeTab()">
+            <h2>Fruits</h2>
+            <div class="directory fruits"></div>
+        </div>
+        <div class="tabs" onclick="changeTab()">
+                <h2>Vegetables</h2>
+                <div class="directory vegetables"></div>
+        </div>
+        <div class="tabs" onclick="changeTab()">
+                <h2>Protein</h2>
+                <div class="directory protein"></div>
+        </div>
+        <div class="tabs" onclick="changeTab()">
+            <h2>Dairy & Grains</h2>
+            <div class="directory dairyGrains"></div>
+        </div> 
+        <div class="tabs" onclick="changeTab()">
+            <h2>More</h2>
+            <div class="directory more"></div>
+        </div>
+    </section>
+    <section class="receipt">
+        <div class="leftItems">
+        <!-- Item names  -->
+        </div>
+        <div class="rightCals">
+        <!-- Item Calories-->    
+        </div>
+    </section>
+   <footer>
 
-    <script type="text/javascript" src="./meal-script.js"></script>
-    <script type="text/javascript" src="./test_foods.json"></script>
-    <script src="jquery-3.4.1.min.js"></script>
+   </footer>
 </body>
 </html>
