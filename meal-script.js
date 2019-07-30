@@ -11,6 +11,7 @@ var more = {'Peanut butter': ['30mL', 32.0, 191.0, 158.0, 8.0, 3.0, 7.0], 'Caesa
 
 // FUNCTIONS
 function start() {
+   //please do weight in pounds and height in cm
    var profile = document.getElementById("profile"); 
    var height = document.getElementById("height").value;
    var weight = document.getElementById("weight").value;
@@ -19,6 +20,9 @@ function start() {
    var activity = document.getElementById("activity").value;
    var gender = document.getElementById("gender").value;
    
+   //need to error check for these variable values
+
+   //switch case statement to set the pa coefficient used in the calories burned equation
    switch(activity) {
       case 1:
         var pa = 1;
@@ -35,15 +39,46 @@ function start() {
       default:
          var pa = 1.25;
    }
-   if (gender == "male"){
-      var calBurned = int(662 - (9.53 * age) + pa * ((15.91 * weight) + (539.6 * height)));
-   } else{
-      var calBurned = int(354 - (6.91 * age) + pa * ((9.36 * weight) + (726 * height)));
-   }
 
+   //calories burned equations
+   //equations come from
+   //https://www.canada.ca/en/health-canada/services/food-nutrition/healthy-eating/dietary-reference-intakes/tables.html
+   if (gender == "male"){
+      var calBurned = int(662 - (9.53 * age) + pa * ((15.91 * weight / 2.20462) + (539.6 * height * 100)));
+   } else{
+      var calBurned = int(354 - (6.91 * age) + pa * ((9.36 * weight / 2.20462) + (726 * height * 100)));
+   }
+   
+   var weightChange = (idealWeight - weight)
+   var poundsPerWeek = weightChange/timeframe
+   //3500 comes from average calories per pound
+   //calories that need to be consumed daily to achieve target weight
+   window.calIntakeGoal =  (-calBurned) + int((poundsPerWeek / 7) * 3500)
    
 }
 
 function changeTab() {
+
+   test_dict = {"jack": [1, 2, 3, "img_src.jpg"]}
+
+   //example of what the for loop that will go through test dictionary data will look like
+   for(var foodName in test_dict) {
+   var stats = test_dict[key];
+   var calories = stats[0]
+   var sugar = stats[1]
+   var protein = stats[2]
+   var img = stats[3]
+
+   //this string contains the html for any food item container
+   var containerString = "<div class=\"foodItem\" id=\"" + foodName + ">" + foodContent + "</div>"
+   //then in the section where is says foodContent we will add the info for the food like: 
+   //  <h2> + calories + </h2> 
+   //  <p> + sugar + </p>
+   // <img> + img + </img>
+  
+   // now we just append the container html into the inner html of the fruits class
+   document.getElementById("fruits").appendChild(containerString)
+
+   }
    
 }
