@@ -58,7 +58,6 @@ function start() {
 }
 
 function changeTab() {
-
    test_dict = {"jack": [1, 2, 3, "img_src.jpg"]}
 
    //example of what the for loop that will go through test dictionary data will look like
@@ -78,7 +77,28 @@ function changeTab() {
   
    // now we just append the container html into the inner html of the fruits class
    document.getElementById("fruits").appendChild(containerString)
-
    }
-   
+}
+
+// Toggles data to container elements on click (adds checked and food name)
+function check() {
+   var name = event.target.firstChild.nextElementSibling.innerText;
+   var attrName = "data-name=\"" + name + "\""; 
+   event.target.toggleAttribute('checked');
+   event.target.setAttribute('data-name', name);
+   event.target.classList.toggle('checked');
+}
+
+// Checks directory and adds all "checked" containers to a list, resets every click
+function receipt() {
+   var len = document.getElementById('directory').childNodes.length;
+   var child = document.getElementById('directory').childNodes;
+   var list = document.getElementById('receiptItems');
+   list.innerHTML = "";
+   for (var i = 1; i < len; i += 2) {
+      if (child[i].getAttribute('checked') != null) {
+         var name = child[i].getAttribute('data-name');
+         list.innerHTML += "<li>" + name + "</li>";
+      }
+   }
 }
