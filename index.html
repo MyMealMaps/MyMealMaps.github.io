@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Meal Plan</title>
 
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="./meal-script.js"></script>
 </head>
 <body>
@@ -44,23 +44,69 @@
             <h2 onclick="changeTab()" tabindex="0">Dairy & Grains</h2>
             <h2 onclick="changeTab()" tabindex="0">More</h2>
         </div>
-        <div class="directory">
-            <div class="container"></div>
-            <div class="container"></div>
-            <div class="container"></div>
-            <div class="container"></div>
-            <div class="container"></div>
-            <div class="container"></div>
-            <div class="container"></div>
-            <div class="container"></div>
-            <div class="container"></div>
+        <div id="directory">
+            <div class="container" onclick="check()">
+                <h3>Name of food</h3>
+                <p>Calories:6654</p>
+                <p>Sodium: 245</p>
+                <p>Protein: 123</p>
+            </div>
+            <div class="container" data-name="" onclick="check()">
+                <h3>Name of food</h3>
+                <p>Calories:6654</p>
+                <p>Sodium: 245</p>
+                <p>Protein: 123</p>
+            </div>
+            <div class="container" data-name="" onclick="check()">
+                <h3>Name of food</h3>
+                <p>Calories:6654</p>
+                <p>Sodium: 245</p>
+                <p>Protein: 123</p>
+            </div>
+            <div class="container" data-name="" onclick="check()">
+                <h3>Name of food</h3>
+                <p>Calories:6654</p>
+                <p>Sodium: 245</p>
+                <p>Protein: 123</p>
+            </div>
+            <div class="container" data-name="" onclick="check()">
+                <h3>Name of food</h3>
+                <p>Calories:6654</p>
+                <p>Sodium: 245</p>
+                <p>Protein: 123</p>
+            </div>
+            <div class="container" data-name="" onclick="check()">
+                <h3>Name of food</h3>
+                <p>Calories:6654</p>
+                <p>Sodium: 245</p>
+                <p>Protein: 123</p>
+            </div>
+            <div class="container" data-name="" onclick="check()">
+                <h3>Name of food</h3>
+                <p>Calories:6654</p>
+                <p>Sodium: 245</p>
+                <p>Protein: 123</p>
+            </div>
+            <div class="container" data-name="" onclick="check()">
+                <h3>Name of food</h3>
+                <p>Calories:6654</p>
+                <p>Sodium: 245</p>
+                <p>Protein: 123</p>
+            </div>
+            <div class="container" data-name="" onclick="check()">
+                <h3>Name of food</h3>
+                <p>Calories:6654</p>
+                <p>Sodium: 245</p>
+                <p>Protein: 123</p>
+            </div>
         </div>
-         
+        <button onclick="receipt()">Get total</button>
     </section>
     <section id="receipt">
         <h2>Your Receipt</h2>
         <div class="leftItems">
         <!-- Item names  -->
+        <ul id="receiptItems"></ul>
         </div>
         <div class="rightCals">
         <!-- Item Calories-->    
