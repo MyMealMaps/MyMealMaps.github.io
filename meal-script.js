@@ -47,3 +47,24 @@ function start() {
 function changeTab() {
    
 }
+
+function check() {
+   var name = event.target.firstChild.nextElementSibling.innerText;
+   var attrName = "data-name=\"" + name + "\""; 
+   event.target.toggleAttribute('checked');
+   event.target.setAttribute('data-name', name);
+   event.target.classList.toggle('checked');
+}
+
+function receipt() {
+   var len = document.getElementById('directory').childNodes.length;
+   var child = document.getElementById('directory').childNodes;
+   var list = document.getElementById('receiptItems');
+   list.innerHTML = "";
+   for (var i = 1; i < len; i += 2) {
+      if (child[i].getAttribute('checked') != null) {
+         var name = child[i].getAttribute('data-name');
+         list.innerHTML += "<li>" + name + "</li>";
+      }
+   }
+}
