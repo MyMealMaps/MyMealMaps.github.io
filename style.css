@@ -13,10 +13,30 @@ header {
 
 #profile { 
     width: 70%;
-    height: 35vh;
+    height: 50vh;
     background-color: antiquewhite;
     padding: 50px;
     margin: 0 auto;
+}
+#btn {
+    margin: 20px 0;
+    padding: 10px;
+    width: 100px;
+    background-color: #da7070;
+    box-shadow: 0 5px 10px #888888;
+}
+#btn:hover {
+    background-color: #a1e681;
+    transition: 0.2s;
+}
+#btn:active {
+    box-shadow: none;
+    transform: translateY(5px);
+    transition: 0.2s;
+}
+
+#genderError, #intError, #ageError, #healthError {
+    color: #da7070;
 }
 
 #items {
