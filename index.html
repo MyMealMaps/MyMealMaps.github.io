@@ -18,13 +18,15 @@
         <h2>Build your profile</h2>
         <form action="">
             <p>Gender</p>
-            <input type="radio" name="gender" id ="female"> Female
-            <input type="radio" name="gender" id ="male"> Male
-            <p>Height(m):</p>
+            <input type="radio" name="gender" id ="female" value="female"> Female
+            <input type="radio" name="gender" id ="male" value="male"> Male
+            <p>Age:</p>
+            <input type="text" name="age" id="age">
+            <p>Height(cm):</p>
             <input type="text" name="height" id="height">
-            <p>Weight(kg):</p>
+            <p>Weight(lbs):</p>
             <input type="text" name="weight" id="weight">
-            <p>Ideal weight(kg):</p>
+            <p>Ideal weight(lbs):</p>
             <input type="text" name="ideal" id="ideal">
             <p>Timeframe:</p>
             <input type="range" name="timeframe" id="timeframe" value="50" min="0" max="100" oninput="timeOutput.value = timeframe.value">
@@ -32,8 +34,13 @@
             <p>Activity Level:</p>
             <input type="range" name="activity" id="activity" value="2" min="1" max="4" oninput="activeOutput.value = activity.value">
             <output  id="activeOutput"></output>
-           
-            <button onclick="start()">Get Started!</button>
+
+            <h3 id="btn" onclick="values()">Get Started!</h3>
+
+            <p id="genderError"></p>
+            <p id="intError"></p>
+            <p id="ageError"></p>     
+            <p id="healthError"></p>       
         </form>
     </section>
     <section id="items">
@@ -51,49 +58,49 @@
                 <p>Sodium: 245</p>
                 <p>Protein: 123</p>
             </div>
-            <div class="container" data-name="" onclick="check()">
+            <div class="container" onclick="check()">
                 <h3>Name of food</h3>
                 <p>Calories:6654</p>
                 <p>Sodium: 245</p>
                 <p>Protein: 123</p>
             </div>
-            <div class="container" data-name="" onclick="check()">
+            <div class="container" onclick="check()">
                 <h3>Name of food</h3>
                 <p>Calories:6654</p>
                 <p>Sodium: 245</p>
                 <p>Protein: 123</p>
             </div>
-            <div class="container" data-name="" onclick="check()">
+            <div class="container" onclick="check()">
                 <h3>Name of food</h3>
                 <p>Calories:6654</p>
                 <p>Sodium: 245</p>
                 <p>Protein: 123</p>
             </div>
-            <div class="container" data-name="" onclick="check()">
+            <div class="container" onclick="check()">
                 <h3>Name of food</h3>
                 <p>Calories:6654</p>
                 <p>Sodium: 245</p>
                 <p>Protein: 123</p>
             </div>
-            <div class="container" data-name="" onclick="check()">
+            <div class="container" onclick="check()">
                 <h3>Name of food</h3>
                 <p>Calories:6654</p>
                 <p>Sodium: 245</p>
                 <p>Protein: 123</p>
             </div>
-            <div class="container" data-name="" onclick="check()">
+            <div class="container" onclick="check()">
                 <h3>Name of food</h3>
                 <p>Calories:6654</p>
                 <p>Sodium: 245</p>
                 <p>Protein: 123</p>
             </div>
-            <div class="container" data-name="" onclick="check()">
+            <div class="container" onclick="check()">
                 <h3>Name of food</h3>
                 <p>Calories:6654</p>
                 <p>Sodium: 245</p>
                 <p>Protein: 123</p>
             </div>
-            <div class="container" data-name="" onclick="check()">
+            <div class="container" onclick="check()">
                 <h3>Name of food</h3>
                 <p>Calories:6654</p>
                 <p>Sodium: 245</p>
@@ -105,11 +112,10 @@
     <section id="receipt">
         <h2>Your Receipt</h2>
         <div class="leftItems">
-        <!-- Item names  -->
-        <ul id="receiptItems"></ul>
+            <ul id="receiptItems"></ul>
         </div>
         <div class="rightCals">
-        <!-- Item Calories-->    
+            <ul id="receiptInfo"></ul>
         </div>
     </section>
    <footer>
