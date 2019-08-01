@@ -15,58 +15,59 @@
         <p>Slogan here</p>
     </header>
     <section id="profile">
-        <p>Profile</p>
+        <h2>Build your profile</h2>
         <form action="">
             <p>Gender</p>
-            <input type="text" name="gender" id ="gender">
-            <p>Height(m):</p>
+            <input type="radio" name="gender" id ="female" value="female"> Female
+            <input type="radio" name="gender" id ="male" value="male"> Male
+            <p>Age:</p>
+            <input type="text" name="age" id="age">
+            <p>Height(cm):</p>
             <input type="text" name="height" id="height">
-            <p>Weight(kg):</p>
+            <p>Weight(lbs):</p>
             <input type="text" name="weight" id="weight">
-            <p>Ideal weight:</p>
+            <p>Ideal weight(lbs):</p>
             <input type="text" name="ideal" id="ideal">
             <p>Timeframe:</p>
             <input type="range" name="timeframe" id="timeframe" value="50" min="0" max="100" oninput="timeOutput.value = timeframe.value">
             <output  id="timeOutput"></output>
-            <p>Activity:</p>
+            <p>Activity Level:</p>
             <input type="range" name="activity" id="activity" value="2" min="1" max="4" oninput="activeOutput.value = activity.value">
             <output  id="activeOutput"></output>
-            <br>
-            <button onclick="start()">Get Started!</button>
+
+            <h3 id="btn" onclick="values()">Get Started!</h3>
+
+            <p id="genderError"></p>
+            <p id="intError"></p>
+            <p id="ageError"></p>     
+            <p id="healthError"></p>       
         </form>
     </section>
     <section id="items">
-        <div class="tabs" onclick="changeTab()">
-            <h2>Fruits</h2>
-            <div class="directory fruits"></div>
+        <div class="tabs">
+            <h2 onclick="changeTab()" tabindex="0">Fruits</h2>
+            <h2 onclick="changeTab()" tabindex="0">Vegetables</h2>
+            <h2 onclick="changeTab()" tabindex="0">Protein</h2>
+            <h2 onclick="changeTab()" tabindex="0">Dairy & Grains</h2>
+            <h2 onclick="changeTab()" tabindex="0">More</h2>
         </div>
-        <div class="tabs" onclick="changeTab()">
-                <h2>Vegetables</h2>
-                <div class="directory vegetables"></div>
+        <div id="directory">
         </div>
-        <div class="tabs" onclick="changeTab()">
-                <h2>Protein</h2>
-                <div class="directory protein"></div>
-        </div>
-        <div class="tabs" onclick="changeTab()">
-            <h2>Dairy & Grains</h2>
-            <div class="directory dairyGrains"></div>
-        </div> 
-        <div class="tabs" onclick="changeTab()">
-            <h2>More</h2>
-            <div class="directory more"></div>
-        </div>
+        <button onclick="receipt()">Add to Receipt</button>
+        <button onclick="receiptReset()">Reset</button>
+        <button onclick="uncheck()">Uncheck All</button>
     </section>
-    <section class="receipt">
+    <section id="receipt">
+        <h2>Your Receipt</h2>
         <div class="leftItems">
-        <!-- Item names  -->
+            <ul id="receiptItems"></ul>
         </div>
         <div class="rightCals">
-        <!-- Item Calories-->    
+            <ul id="receiptInfo"></ul>
         </div>
     </section>
    <footer>
-
+        <small>&copy;2019 Project by Maggie Shan and Jack Liu</small>
    </footer>
 </body>
 </html>

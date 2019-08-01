@@ -1,28 +1,182 @@
-// DATA
-var vegetables = {'Vegetables': ['0', 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Asparagus': ['6 spears', 90.0, 18.0, 8.0, 2.0, 1.0, 3.0], 'Bean sprouts': ['125mL', 66.0, 33.0, 6.0, 3.0, 0.0, 7.0], 'Lima beans': ['125mL', 95.0, 100.0, 28.0, 6.0, 1.0, 18.0], 'Green beans': ['125mL', 71.0, 22.0, 4.0, 1.0, 1.0, 5.0], 'Beets': ['125mL', 90.0, 40.0, 69.0, 2.0, 7.0, 9.0], 'Brocolli': ['125mL', 46.0, 16.0, 15.0, 1.0, 1.0, 3.0], 'Cabbage': ['125mL', 37.0, 9.0, 7.0, 1.0, 1.0, 2.0], 'Carrots': ['1 medium', 61.0, 25.0, 42.0, 1.0, 3.0, 6.0], 'Cauliflower': ['125mL', 53.0, 13.0, 16.0, 1.0, 1.0, 3.0], 'Celery': ['1 stalk', 40.0, 6.0, 32.0, 0.01, 1.0, 1.0], 'Corn': ['125mL', 87.0, 82.0, 8.0, 3.0, 3.0, 19.0], 'Cucumber': ['4 slices', 28.0, 3.0, 1.0, 0.01, 0.01, 1.0], 'Edamame': ['125mL', 82.0, 100.0, 5.0, 9.0, 2.0, 8.0], 'Eggplant': ['125mL', 52.0, 18.0, 1.0, 0.01, 2.0, 5.0], 'Kale': ['125mL', 69.0, 19.0, 16.0, 1.0, 1.0, 4.0], 'Leek': ['125mL', 55.0, 17.0, 5.0, 0.01, 0.0, 4.0], 'Iceberg lettuce': ['250mL', 58.0, 8.0, 6.0, 1.0, 1.0, 2.0], 'Romain lettuce': ['250mL', 59.0, 10.0, 5.0, 1.0, 1.0, 2.0], 'Mushrooms': ['3 medium', 54.0, 12.0, 2.0, 2.0, 1.0, 2.0], 'Green onions': ['1 medium', 15.0, 5.0, 2.0, 0.01, 0.01, 1.0], 'Green peas': ['125mL', 85.0, 66.0, 61.0, 4.0, 4.0, 12.0], 'Green peppers': ['1/2 pepper', 82.0, 16.0, 2.0, 1.0, 2.0, 4.0], 'Red peppers': ['1/2 pepper', 60.0, 15.0, 1.0, 1.0, 2.0, 4.0], 'Yellow peppers': ['1/2 pepper', 93.0, 25.0, 2.0, 1.0, 0.0, 6.0], 'Potatoes': ['1', 156.0, 156.0, 11.0, 3.0, 0.0, 36.0], 'Radishes': ['3 medium', 14.0, 2.0, 5.0, 0.01, 0.01, 0.01], 'Spinach': ['250mL', 32.0, 7.0, 25.0, 1.0, 0.01, 1.0], 'Tomatoes': ['1', 123.0, 22.0, 6.0, 1.0, 3.0, 5.0], 'Zucchini': ['4', 40.0, 6.0, 4.0, 0.01, 1.0, 1.0]}
+// // GLOBAL VARIABLES
+// Data source from: https://www.canada.ca/en/health-canada/services/food-nutrition/healthy-eating/nutrient-data/nutrient-value-some-common-foods-2008.html
 
-var fruits = {'Apples': ['1', 138.0, 72.0, 1.0, 0.01, 14.0, 19.0], 'Apricots': ['3', 105.0, 50.0, 1.0, 1.0, 10.0, 12.0], 'Avocados': ['1/2 avocado', 101.0, 161.0, 7.0, 2.0, 1.0, 9.0], 'Bananas': ['1', 118.0, 105.0, 1.0, 1.0, 14.0, 27.0], 'Blackberries': ['125mL', 76.0, 33.0, 1.0, 1.0, 4.0, 7.0], 'Blueberries': ['125mL', 77.0, 44.0, 1.0, 1.0, 8.0, 11.0], 'Cherries': ['10', 68.0, 43.0, 0.0, 1.0, 9.0, 11.0], 'Clementines': ['1', 74.0, 35.0, 1.0, 1.0, 7.0, 9.0], 'Cranberries': ['60mL', 31.0, 95.0, 1.0, 0.01, 20.0, 25.0], 'Dates': ['3', 25.0, 70.0, 0.01, 1.0, 16.0, 19.0], 'Figs': ['1', 50.0, 37.0, 1.0, 0.01, 8.0, 10.0], 'Grapefruit': ['1/2 grapefruit', 123.0, 52.0, 0.0, 1.0, 8.0, 13.0], 'Grapes': ['20', 100.0, 69.0, 2.0, 1.0, 15.0, 18.0], 'Kiwis': ['1', 76.0, 46.0, 2.0, 1.0, 7.0, 11.0], 'Lychees': ['10', 96.0, 63.0, 1.0, 1.0, 15.0, 16.0], 'Mango': ['1/2 mango', 104.0, 67.0, 2.0, 1.0, 15.0, 18.0], 'Cantaloupe': ['125mL', 85.0, 29.0, 14.0, 1.0, 7.0, 7.0], 'Honeydew': ['125mL', 90.0, 32.0, 16.0, 0.01, 7.0, 8.0], 'Watermelon': ['125mL', 80.0, 24.0, 1.0, 0.01, 5.0, 6.0], 'Nectarines': ['1', 136.0, 60.0, 0.0, 1.0, 11.0, 14.0], 'Oranges': ['1', 131.0, 62.0, 0.0, 1.0, 12.0, 15.0], 'Papayas': ['125mL', 74.0, 29.0, 2.0, 0.01, 4.0, 7.0], 'Peaches': ['1', 98.0, 38.0, 0.0, 1.0, 8.0, 9.0], 'Pears': ['1', 166.0, 96.0, 2.0, 1.0, 16.0, 26.0], 'Pineapples': ['125mL', 82.0, 42.0, 1.0, 0.01, 8.0, 11.0], 'Plums': ['1', 66.0, 30.0, 0.0, 0.01, 7.0, 8.0], 'Pomegranates': ['1/2 pomegranate', 77.0, 53.0, 2.0, 1.0, 13.0, 13.0], 'Raspberries': ['125mL', 65.0, 34.0, 1.0, 1.0, 3.0, 8.0], 'Strawberries': ['7', 84.0, 27.0, 1.0, 1.0, 4.0, 6.0]}
+var vegetables = [ 
+   {name: "Asparagus", serving: "6 spears", weight: 90.0, calories: 18.0, sodium: 8.0, proteing: 2.0, sugar: 1.0, carbs: 3.0, img: "img.jpg"}, 
+   {name: "Bean sprouts", serving: "125mL", weight: 66.0, calories: 33.0, sodium: 6.0, proteing: 3.0, sugar: 0.0, carbs: 7.0, img: "img.jpg"},
+   {name: "Lima beans", serving: "125mL", weight: 95.0, calories: 100.0, sodium: 28.0, proteing: 6.0, sugar: 1.0, carbs: 18.0, img: "img.jpg"}, 
+   {name: "Green beans", serving: "125mL", weight: 71.0, calories: 22.0, sodium: 4.0, proteing: 1.0, sugar: 1.0, carbs: 5.0, img: "img.jpg"}, 
+   {name: "Beets", serving: "125mL", weight: 90.0, calories: 40.0, sodium: 69.0, proteing: 2.0, sugar: 7.0, carbs: 9.0, img: "img.jpg"},
+   {name: "Brocolli", serving: "125mL", weight: 46.0, calories: 16.0, sodium: 15.0, proteing: 1.0, sugar: 1.0, carbs: 3.0, img: "img.jpg"}, 
+   {name: "Cabbage", serving: "125mL", weight: 37.0, calories: 9.0, sodium: 7.0, proteing: 1.0, sugar: 1.0, carbs: 2.0, img: "img.jpg"}, 
+   {name: "Carrots", serving: "1 medium", weight: 61.0, calories: 25.0, sodium: 42.0, proteing: 1.0, sugar: 3.0, carbs: 6.0, img: "img.jpg"},
+   {name: "Cauliflower", serving: "125mL", weight: 53.0, calories: 13.0, sodium: 16.0, proteing: 1.0, sugar: 1.0, carbs: 3.0, img: "img.jpg"}, 
+   {name: "Celery", serving: "1 stalk", weight: 40.0, calories: 6.0, sodium: 32.0, proteing: 0.01, sugar: 1.0, carbs: 1.0, img: "img.jpg"}, 
+   {name: "Corn", serving: "125mL", weight: 87.0, calories: 82.0, sodium: 8.0, proteing: 3.0, sugar: 3.0, carbs: 19.0, img: "img.jpg"},
+   {name: "Cucumber", serving: "4 slices", weight: 28.0, calories: 3.0, sodium: 1.0, proteing: 0.01, sugar: 0.01, carbs: 1.0, img: "img.jpg"}, 
+   {name: "Edamame", serving: "125mL", weight: 82.0, calories: 100.0, sodium: 5.0, proteing: 9.0, sugar: 2.0, carbs: 8.0, img: "img.jpg"}, 
+   {name: "Eggplant", serving: "125mL", weight: 52.0, calories: 18.0, sodium: 1.0, proteing: 0.01, sugar: 2.0, carbs: 5.0, img: "img.jpg"},
+   {name: "Kale", serving: "125mL", weight: 69.0, calories: 19.0, sodium: 16.0, proteing: 1.0, sugar: 1.0, carbs: 4.0, img: "img.jpg"}, 
+   {name: "Leek", serving: "125mL", weight: 55.0, calories: 17.0, sodium: 5.0, proteing: 0.01, sugar: 0.0, carbs: 4.0, img: "img.jpg"}, 
+   {name: "Iceberg lettuce", serving: "250mL", weight: 58.0, calories: 8.0, sodium: 6.0, proteing: 1.0, sugar: 1.0, carbs: 2.0, img: "img.jpg"},
+   {name: "Romain lettuce", serving: "250mL", weight: 59.0, calories: 10.0, sodium: 5.0, proteing: 1.0, sugar: 1.0, carbs: 2.0, img: "img.jpg"}, 
+   {name: "Mushrooms", serving: "3 medium", weight: 54.0, calories: 12.0, sodium: 2.0, proteing: 2.0, sugar: 1.0, carbs: 2.0, img: "img.jpg"}, 
+   {name: "Green onions", serving: "1 medium", weight: 15.0, calories: 5.0, sodium: 2.0, proteing: 0.01, sugar: 0.01, carbs: 1.0, img: "img.jpg"}, 
+   {name: "Green peas", serving: "125mL", weight: 85.0, calories: 66.0, sodium: 61.0, proteing: 4.0, sugar: 4.0, carbs: 12.0, img: "img.jpg"}, 
+   {name: "Green peppers", serving: "1/2 pepper", weight: 82.0, calories: 16.0, sodium: 2.0, proteing: 1.0, sugar: 2.0, carbs: 4.0, img: "img.jpg"}, 
+   {name: "Red peppers", serving: "1/2 pepper", weight: 60.0, calories: 15.0, sodium: 1.0, proteing: 1.0, sugar: 2.0, carbs: 4.0, img: "img.jpg"}, 
+   {name: "Yellow peppers", serving: "1/2 pepper", weight: 93.0, calories: 25.0, sodium: 2.0, proteing: 1.0, sugar: 0.0, carbs: 6.0, img: "img.jpg"}, 
+   {name: "Potatoes", serving: "1", weight: 156.0, calories: 156.0, sodium: 11.0, proteing: 3.0, sugar: 0.0, carbs: 36.0, img: "img.jpg"}, 
+   {name: "Radishes", serving: "3 medium", weight: 14.0, calories: 2.0, sodium: 5.0, proteing: 0.01, sugar: 0.01, carbs: 0.01, img: "img.jpg"}, 
+   {name: "Spinach", serving: "250mL", weight: 32.0, calories: 7.0, sodium: 25.0, proteing: 1.0, sugar: 0.01, carbs: 1.0, img: "img.jpg"}, 
+   {name: "Tomatoes", serving: "1", weight: 123.0, calories: 22.0, sodium: 6.0, proteing: 1.0, sugar: 3.0, carbs: 5.0, img: "img.jpg"}, 
+   {name: "Zucchini", serving: "4", weight: 40.0, calories: 6.0, sodium: 4.0, proteing: 0.01, sugar: 1.0, carbs: 1.0, img: "img.jpg"}
+]
+var fruits = [
+   {name: "Apples", serving: "1", weight: 138.0, calories: 72.0, sodium: 1.0, proteing: 0.01, sugar: 14.0, carbs: 19.0, img: "img.jpg"}, 
+   {name: "Apricots", serving: "3", weight: 105.0, calories: 50.0, sodium: 1.0, proteing: 1.0, sugar: 10.0, carbs: 12.0, img: "img.jpg"}, 
+   {name: "Avocados", serving: "1/2 avocado", weight: 101.0, calories: 161.0, sodium: 7.0, proteing: 2.0, sugar: 1.0, carbs: 9.0, img: "img.jpg"},
+   {name: "Bananas", serving: "1", weight: 118.0, calories: 105.0, sodium: 1.0, proteing: 1.0, sugar: 14.0, carbs: 27.0, img: "img.jpg"}, 
+   {name: "Blackberries", serving: "125mL", weight: 76.0, calories: 33.0, sodium: 1.0, proteing: 1.0, sugar: 4.0, carbs: 7.0, img: "img.jpg"}, 
+   {name: "Blueberries", serving: "125mL", weight: 77.0, calories: 44.0, sodium: 1.0, proteing: 1.0, sugar: 8.0, carbs: 11.0, img: "img.jpg"},
+   {name: "Cherries", serving: "10", weight: 68.0, calories: 43.0, sodium: 0.0, proteing: 1.0, sugar: 9.0, carbs: 11.0, img: "img.jpg"}, 
+   {name: "Clementines", serving: "1", weight: 74.0, calories: 35.0, sodium: 1.0, proteing: 1.0, sugar: 7.0, carbs: 9.0, img: "img.jpg"}, 
+   {name: "Cranberries", serving: "60mL", weight: 31.0, calories: 95.0, sodium: 1.0, proteing: 0.01, sugar: 20.0, carbs: 25.0, img: "img.jpg"},
+   {name: "Dates", serving: "3", weight: 25.0, calories: 70.0, sodium: 0.01, proteing: 1.0, sugar: 16.0, carbs: 19.0, img: "img.jpg"}, 
+   {name: "Figs", serving: "1", weight: 50.0, calories: 37.0, sodium: 1.0, proteing: 0.01, sugar: 8.0, carbs: 10.0, img: "img.jpg"}, 
+   {name: "Grapefruit", serving: "1/2 grapefruit", weight: 123.0, calories: 52.0, sodium: 0.0, proteing: 1.0, sugar: 8.0, carbs: 13.0, img: "img.jpg"},
+   {name: "Grapes", serving: "20", weight: 100.0, calories: 69.0, sodium: 2.0, proteing: 1.0, sugar: 15.0, carbs: 18.0, img: "img.jpg"}, 
+   {name: "Kiwis", serving: "1", weight: 76.0, calories: 46.0, sodium: 2.0, proteing: 1.0, sugar: 7.0, carbs: 11.0, img: "img.jpg"}, 
+   {name: "Lychees", serving: "10", weight: 96.0, calories: 63.0, sodium: 1.0, proteing: 1.0, sugar: 15.0, carbs: 16.0, img: "img.jpg"}, 
+   {name: "Mango", serving: "1/2 mango", weight: 104.0, calories: 67.0, sodium: 2.0, proteing: 1.0, sugar: 15.0, carbs: 18.0, img: "img.jpg"}, 
+   {name: "Cantaloupe", serving: "125mL", weight: 85.0, calories: 29.0, sodium: 14.0, proteing: 1.0, sugar: 7.0, carbs: 7.0, img: "img.jpg"}, 
+   {name: "Honeydew", serving: "125mL", weight: 90.0, calories: 32.0, sodium: 16.0, proteing: 0.01, sugar: 7.0, carbs: 8.0, img: "img.jpg"},
+   {name: "Watermelon", serving: "125mL", weight: 80.0, calories: 24.0, sodium: 1.0, proteing: 0.01, sugar: 5.0, carbs: 6.0, img: "img.jpg"}, 
+   {name: "Nectarines", serving: "1", weight: 136.0, calories: 60.0, sodium: 0.0, proteing: 1.0, sugar: 11.0, carbs: 14.0, img: "img.jpg"}, 
+   {name: "Oranges", serving: "1", weight: 131.0, calories: 62.0, sodium: 0.0, proteing: 1.0, sugar: 12.0, carbs: 15.0, img: "img.jpg"},
+   {name: "Papayas", serving: "125mL", weight: 74.0, calories: 29.0, sodium: 2.0, proteing: 0.01, sugar: 4.0, carbs: 7.0, img: "img.jpg"}, 
+   {name: "Peaches", serving: "1", weight: 98.0, calories: 38.0, sodium: 0.0, proteing: 1.0, sugar: 8.0, carbs: 9.0, img: "img.jpg"}, 
+   {name: "Pears", serving: "1", weight: 166.0, calories: 96.0, sodium: 2.0, proteing: 1.0, sugar: 16.0, carbs: 26.0, img: "img.jpg"}, 
+   {name: "Pineapples", serving: "125mL", weight: 82.0, calories: 42.0, sodium: 1.0, proteing: 0.01, sugar: 8.0, carbs: 11.0, img: "img.jpg"}, 
+   {name: "Plums", serving: "1", weight: 66.0, calories: 30.0, sodium: 0.0, proteing: 0.01, sugar: 7.0, carbs: 8.0, img: "img.jpg"}, 
+   {name: "Pomegranates", serving: "1/2 pomegranate", weight: 77.0, calories: 53.0, sodium: 2.0, proteing: 1.0, sugar: 13.0, carbs: 13.0, img: "img.jpg"},
+   {name: "Raspberries", serving: "125mL", weight: 65.0, calories: 34.0, sodium: 1.0, proteing: 1.0, sugar: 3.0, carbs: 8.0, img: "img.jpg"}, 
+   {name: "Strawberries", serving: "7", weight: 84.0, calories: 27.0, sodium: 1.0, proteing: 1.0, sugar: 4.0, carbs: 6.0, img: "img.jpg"}
+]
+var dairyGrains = [
+   {name: "Chocolate milk 2%", serving: "250mL", weight: 264.0, calories: 190.0, sodium: 0.6, proteing: 8.0, sugar: 26.0, carbs: 27.0, img: "img.jpg"}, 
+   {name: "White milk 2%", serving: "250mL", weight: 258.0, calories: 129.0, sodium: 0.1, proteing: 9.0, sugar: 13.0, carbs: 12.0, img: "img.jpg"}, 
+   {name: "Soy milk", serving: "250mL", weight: 257.0, calories: 110.0, sodium: 1.1, proteing: 7.0, sugar: 9.0, carbs: 13.0, img: "img.jpg"}, 
+   {name: "Fruit or Vanilla Yogourt", serving: "175mL", weight: 185.0, calories: 183.0, sodium: 0.1, proteing: 7.0, sugar: 25.0, carbs: 30.0, img: "img.jpg"}, 
+   {name: "Butter", serving: "5mL", weight: 5.0, calories: 34.0, sodium: 28.0, proteing: 0.01, sugar: 0.0, carbs: 0.01, img: "img.jpg"}, 
+   {name: "Plain Bagels", serving: "1", weight: 71.0, calories: 195.0, sodium: 379.0, proteing: 7.0, sugar: 4.0, carbs: 38.0, img: "img.jpg"}, 
+   {name: "White Bread", serving: "1 slice", weight: 35.0, calories: 93.0, sodium: 238.0, proteing: 3.0, sugar: 2.0, carbs: 18.0, img: "img.jpg"}, 
+   {name: "French toast", serving: "1 slice", weight: 65.0, calories: 149.0, sodium: 311.0, proteing: 5.0, sugar: 8.0, carbs: 16.0, img: "img.jpg"},
+   {name: "Pancakes", serving: "1", weight: 50.0, calories: 112.0, sodium: 211.0, proteing: 3.0, sugar: 2.0, carbs: 20.0, img: "img.jpg"}, 
+   {name: "Waffles", serving: "1", weight: 37.0, calories: 103.0, sodium: 146.0, proteing: 3.0, sugar: 2.0, carbs: 14.0, img: "img.jpg"}, 
+   {name: "Oatmeal", serving: "2", weight: 26.0, calories: 117.0, sodium: 100.0, proteing: 2.0, sugar: 6.0, carbs: 18.0, img: "img.jpg"},
+   {name: "Croissants", serving: "1", weight: 57.0, calories: 231.0, sodium: 424.0, proteing: 5.0, sugar: 6.0, carbs: 26.0, img: "img.jpg"}, 
+   {name: "Cheddar", serving: "50g", weight: 50.0, calories: 202.0, sodium: 311.0, proteing: 12.0, sugar: 0.01, carbs: 1.0, img: "img.jpg"}, 
+   {name: "Cream cheese", serving: "30mL", weight: 29.0, calories: 103.0, sodium: 87.0, proteing: 2.0, sugar: 0.01, carbs: 1.0, img: "img.jpg"}, 
+   {name: "Mozzarella", serving: "50g", weight: 50.0, calories: 141.0, sodium: 187.0, proteing: 10.0, sugar: 1.0, carbs: 1.0, img: "img.jpg"}
+]
+var protein = [
+   {name: "Fried eggs", serving: "2 large", weight: 92.0, calories: 173.0, sodium: 322.0, proteing: 12.0, sugar: 0.0, carbs: 2.0, img: "img.jpg"}, 
+   {name: "Hard-boiled eggs", serving: "1 large", weight: 50.0, calories: 78.0, sodium: 62.0, proteing: 6.0, sugar: 0.0, carbs: 1.0, img: "img.jpg"}, 
+   {name: "Egg yolk- Cooked", serving: "1 large", weight: 17.0, calories: 59.0, sodium: 34.0, proteing: 3.0, sugar: 0.0, carbs: 1.0, img: "img.jpg"}, 
+   {name: "Scrambled eggs", serving: "2 eggs", weight: 124.0, calories: 189.0, sodium: 476.0, proteing: 13.0, sugar: 0.0, carbs: 4.0, img: "img.jpg"}, 
+   {name: "Salmon", serving: "75g", weight: 75.0, calories: 155.0, sodium: 46.0, proteing: 17.0, sugar: 0.0, carbs: 0.0, img: "img.jpg"}, 
+   {name: "Rainbow trout", serving: "75g", weight: 75.0, calories: 127.0, sodium: 32.0, proteing: 18.0, sugar: 0.0, carbs: 0.0, img: "img.jpg"}, 
+   {name: "Tuna", serving: "75g", weight: 75.0, calories: 87.0, sodium: 254.0, proteing: 19.0, sugar: 0.0, carbs: 0.0, img: "img.jpg"}, 
+   {name: "Crab", serving: "125mL", weight: 62.0, calories: 72.0, sodium: 431.0, proteing: 15.0, sugar: 0.0, carbs: 0.0, img: "img.jpg"}, 
+   {name: "Lobster", serving: "125mL", weight: 77.0, calories: 75.0, sodium: 291.0, proteing: 16.0, sugar: 0.0, carbs: 1.0, img: "img.jpg"}, 
+   {name: "Shrimp", serving: "6 medium", weight: 30.0, calories: 30.0, sodium: 67.0, proteing: 6.0, sugar: 0.0, carbs: 0.0, img: "img.jpg"}, 
+   {name: "Ground beef", serving: "75g", weight: 75.0, calories: 243.0, sodium: 78.0, proteing: 22.0, sugar: 0.0, carbs: 0.0, img: "img.jpg"}, 
+   {name: "Rib eye steak", serving: "75g", weight: 75.0, calories: 230.0, sodium: 40.0, proteing: 20.0, sugar: 0.0, carbs: 0.0, img: "img.jpg"}, 
+   {name: "Striploin steak", serving: "75g", weight: 75.0, calories: 191.0, sodium: 43.0, proteing: 23.0, sugar: 0.0, carbs: 0.0, img: "img.jpg"}, 
+   {name: "T-Bone steak", serving: "75g", weight: 75.0, calories: 216.0, sodium: 51.0, proteing: 22.0, sugar: 0.0, carbs: 0.0, img: "img.jpg"}, 
+   {name: "Tenderloin steak", serving: "75g", weight: 75.0, calories: 170.0, sodium: 50.0, proteing: 24.0, sugar: 0.0, carbs: 0.0, img: "img.jpg"}, 
+   {name: "Sirloin steak", serving: "75g", weight: 75.0, calories: 146.0, sodium: 43.0, proteing: 21.0, sugar: 0.0, carbs: 0.0, img: "img.jpg"}, 
+   {name: "Pork", serving: "75g", weight: 75.0, calories: 201.8, sodium: 54.8, proteing: 20.3, sugar: 0.0, carbs: 0.0, img: "img.jpg"},
+   {name: "Lamb", serving: "75g", weight: 75.0, calories: 209.1, sodium: 45.9, proteing: 18.5, sugar: 0.0, carbs: 0.0, img: "img.jpg"}, 
+   {name: "Chicken breast", serving: "75g", weight: 75.0, calories: 119.0, sodium: 56.0, proteing: 25.0, sugar: 0.0, carbs: 0.0, img: "img.jpg"}, 
+   {name: "Chicken Wing or Thigh", serving: "75g", weight: 75.0, calories: 218.0, sodium: 62.0, proteing: 20.0, sugar: 0.0, carbs: 0.0, img: "img.jpg"}, 
+   {name: "Turkey - Dark", serving: "75g", weight: 75.0, calories: 139.0, sodium: 62.0, proteing: 19.0, sugar: 0.0, carbs: 0.0, img: "img.jpg"}, 
+   {name: "Turkey - Light", serving: "75g", weight: 75.0, calories: 143.0, sodium: 50.0, proteing: 21.0, sugar: 0.0, carbs: 0.0, img: "img.jpg"}, 
+   {name: "Bacon", serving: "3 slices", weight: 24.0, calories: 130.0, sodium: 554.0, proteing: 9.0, sugar: 0.0, carbs: 0.01, img: "img.jpg"}, 
+   {name: "Ham", serving: "75g", weight: 75.0, calories: 118.0, sodium: 995.0, proteing: 19.0, sugar: 0.0, carbs: 1.0, img: "img.jpg"}, 
+   {name: "Tofu", serving: "150g", weight: 150.0, calories: 189.0, sodium: 26.0, proteing: 21.0, sugar: 1.0, carbs: 3.0, img: "img.jpg"}, 
+   {name: "Peanuts", serving: "60mL", weight: 37.0, calories: 217.0, sodium: 2.0, proteing: 9.0, sugar: 2.0, carbs: 8.0, img: "img.jpg"}, 
+   {name: "Almonds", serving: "60mL", weight: 35.0, calories: 209.0, sodium: 119.0, proteing: 8.0, sugar: 2.0, carbs: 7.0, img: "img.jpg"}, 
+   {name: "Cashews", serving: "60mL", weight: 35.0, calories: 199.0, sodium: 222.0, proteing: 5.0, sugar: 2.0, carbs: 11.0, img: "img.jpg"}, 
+   {name: "Pistachios", serving: "60mL", weight: 31.0, calories: 177.0, sodium: 126.0, proteing: 7.0, sugar: 2.0, carbs: 8.0, img: "img.jpg"}, 
+   {name: "Walnuts", serving: "60mL", weight: 25.0, calories: 166.0, sodium: 1.0, proteing: 4.0, sugar: 1.0, carbs: 3.0, img: "img.jpg"}, 
+   {name: "Hazelnuts", serving: "60mL", weight: 34.0, calories: 215.0, sodium: 0.0, proteing: 5.0, sugar: 1.0, carbs: 6.0, img: "img.jpg"}, 
+   {name: "Sunflower seeds", serving: "60mL", weight: 32.0, calories: 189.0, sodium: 133.0, proteing: 6.0, sugar: 1.0, carbs: 8.0, img: "img.jpg"}, 
+   {name: "Black beans", serving: "175mL", weight: 178.0, calories: 162.0, sodium: 682.0, proteing: 11.0, sugar: 0.0, carbs: 29.0, img: "img.jpg"}, 
+   {name: "Soybeans", serving: "175mL", weight: 127.0, calories: 220.0, sodium: 1.0, proteing: 21.0, sugar: 4.0, carbs: 13.0, img: "img.jpg"}, 
+   {name: "Chickpeas", serving: "175mL", weight: 178.0, calories: 211.0, sodium: 531.0, proteing: 9.0, sugar: 0.0, carbs: 40.0, img: "img.jpg"}
+]
+var more = [
+   {name: "Peanut butter", serving: "30mL", weight: 32.0, calories: 191.0, sodium: 158.0, proteing: 8.0, sugar: 3.0, carbs: 7.0, img: "img.jpg"}, 
+   {name: "Caesar dressing", serving: "15mL", weight: 15.0, calories: 79.0, sodium: 161.0, proteing: 0.01, sugar: 0.0, carbs: 0.01, img: "img.jpg"}, 
+   {name: "Ranch dressing", serving: "15mL", weight: 15.0, calories: 71.0, sodium: 120.0, proteing: 0.01, sugar: 0.0, carbs: 1.0, img: "img.jpg"}, 
+   {name: "Coffee", serving: "250mL", weight: 256.0, calories: 101.0, sodium: 79.0, proteing: 5.0, sugar: 9.0, carbs: 7.0, img: "img.jpg"}, 
+   {name: "Tea", serving: "250mL", weight: 250.0, calories: 3.0, sodium: 8.0, proteing: 0.0, sugar: 0.0, carbs: 1.0, img: "img.jpg"}, 
+   {name: "Ketchup", serving: "15mL", weight: 15.0, calories: 15.0, sodium: 169.0, proteing: 0.01, sugar: 3.0, carbs: 4.0, img: "img.jpg"}, 
+   {name: "Mustard", serving: "15mL", weight: 16.0, calories: 11.0, sodium: 180.0, proteing: 1.0, sugar: 0.01, carbs: 1.0, img: "img.jpg"}, 
+   {name: "Chocolate chip muffin", serving: "1", weight: 113.0, calories: 366.0, sodium: 341.0, proteing: 8.0, sugar: 16.0, carbs: 53.0, img: "img.jpg"}, 
+   {name: "Granola bars", serving: "1", weight: 26.0, calories: 109.0, sodium: 90.0, proteing: 1.0, sugar: 6.0, carbs: 20.0, img: "img.jpg"}, 
+   {name: "Apple pie", serving: "1/8th slice", weight: 125.0, calories: 411.0, sodium: 327.0, proteing: 4.0, sugar: 0.0, carbs: 58.0, img: "img.jpg"}, 
+   {name: "Pumpkin pie", serving: "1/6th slice", weight: 109.0, calories: 229.0, sodium: 307.0, proteing: 4.0, sugar: 15.0, carbs: 30.0, img: "img.jpg"}
+]
 
-var dairyGrains = {'Chocolate milk 2%': ['250mL', 264.0, 190.0, 0.6, 8.0, 26.0, 27.0], 'White milk 2%': ['250mL', 258.0, 129.0, 0.1, 9.0, 13.0, 12.0], 'Soy milk': ['250mL', 257.0, 110.0, 1.1, 7.0, 9.0, 13.0], 'Fruit or Vanilla Yogourt': ['175mL', 185.0, 183.0, 0.1, 7.0, 25.0, 30.0], 'Butter': ['5mL', 5.0, 34.0, 28.0, 0.01, 0.0, 0.01], 'Plain Bagels': ['1', 71.0, 195.0, 379.0, 7.0, 4.0, 38.0], 'White Bread': ['1 slice', 35.0, 93.0, 238.0, 3.0, 2.0, 18.0], 'French toast': ['1 slice', 65.0, 149.0, 311.0, 5.0, 8.0, 16.0], 'Pancakes': ['1', 50.0, 112.0, 211.0, 3.0, 2.0, 20.0], 'Waffles': ['1', 37.0, 103.0, 146.0, 3.0, 2.0, 14.0], 'Oatmeal': ['2', 26.0, 117.0, 100.0, 2.0, 6.0, 18.0], 'Croissants': ['1', 57.0, 231.0, 424.0, 5.0, 6.0, 26.0], 'Cheddar': ['50g', 50.0, 202.0, 311.0, 12.0, 0.01, 1.0], 'Cream cheese': ['30mL', 29.0, 103.0, 87.0, 2.0, 0.01, 1.0], 'Mozzarella': ['50g', 50.0, 141.0, 187.0, 10.0, 1.0, 1.0]}
-
-var protein = {'Fried eggs': ['2 large', 92.0, 173.0, 322.0, 12.0, 0.0, 2.0], 'Hard-boiled eggs': ['1 large', 50.0, 78.0, 62.0, 6.0, 0.0, 1.0], 'Egg yolk- Cooked': ['1 large', 17.0, 59.0, 34.0, 3.0, 0.0, 1.0], 'Scrambled eggs': ['2 eggs', 124.0, 189.0, 476.0, 13.0, 0.0, 4.0], 'Salmon': ['75g', 75.0, 155.0, 46.0, 17.0, 0.0, 0.0], 'Rainbow trout': ['75g', 75.0, 127.0, 32.0, 18.0, 0.0, 0.0], 'Tuna': ['75g', 75.0, 87.0, 254.0, 19.0, 0.0, 0.0], 'Crab': ['125mL', 62.0, 72.0, 431.0, 15.0, 0.0, 0.0], 'Lobster': ['125mL', 77.0, 75.0, 291.0, 16.0, 0.0, 1.0], 'Shrimp': ['6 medium', 30.0, 30.0, 67.0, 6.0, 0.0, 0.0], 'Ground beef': ['75g', 75.0, 243.0, 78.0, 22.0, 0.0, 0.0], 'Rib eye steak': ['75g', 75.0, 230.0, 40.0, 20.0, 0.0, 0.0], 'Striploin steak': ['75g', 75.0, 191.0, 43.0, 23.0, 0.0, 0.0], 'T-Bone steak': ['75g', 75.0, 216.0, 51.0, 22.0, 0.0, 0.0], 'Tenderloin steak': ['75g', 75.0, 170.0, 50.0, 24.0, 0.0, 0.0], 'Sirloin steak': ['75g', 75.0, 146.0, 43.0, 21.0, 0.0, 0.0], 'Pork': ['75g', 75.0, 201.8, 54.8, 20.3, 0.0, 0.0], 'Lamb': ['75g', 75.0, 209.1, 45.9, 18.5, 0.0, 0.0], 'Chicken breast': ['75g', 75.0, 119.0, 56.0, 25.0, 0.0, 0.0], 'Chicken Wing or Thigh': ['75g', 75.0, 218.0, 62.0, 20.0, 0.0, 0.0], 'Turkey - Dark': ['75g', 75.0, 139.0, 62.0, 19.0, 0.0, 0.0], 'Turkey - Light': ['75g', 75.0, 143.0, 50.0, 21.0, 0.0, 0.0], 'Bacon': ['3 slices', 24.0, 130.0, 554.0, 9.0, 0.0, 0.01], 'Ham': ['75g', 75.0, 118.0, 995.0, 19.0, 0.0, 1.0], 'Tofu': ['150g', 150.0, 189.0, 26.0, 21.0, 1.0, 3.0], 'Peanuts': ['60mL', 37.0, 217.0, 2.0, 9.0, 2.0, 8.0], 'Almonds': ['60mL', 35.0, 209.0, 119.0, 8.0, 2.0, 7.0], 'Cashews': ['60mL', 35.0, 199.0, 222.0, 5.0, 2.0, 11.0], 'Pistachios': ['60mL', 31.0, 177.0, 126.0, 7.0, 2.0, 8.0], 'Walnuts': ['60mL', 25.0, 166.0, 1.0, 4.0, 1.0, 3.0], 'Hazelnuts': ['60mL', 34.0, 215.0, 0.0, 5.0, 1.0, 6.0], 'Sunflower seeds': ['60mL', 32.0, 189.0, 133.0, 6.0, 1.0, 8.0], 'Black beans': ['175mL', 178.0, 162.0, 682.0, 11.0, 0.0, 29.0], 'Soybeans': ['175mL', 127.0, 220.0, 1.0, 21.0, 4.0, 13.0], 'Chickpeas': ['175mL', 178.0, 211.0, 531.0, 9.0, 0.0, 40.0]}
-
-var more = {'Peanut butter': ['30mL', 32.0, 191.0, 158.0, 8.0, 3.0, 7.0], 'Caesar dressing': ['15mL', 15.0, 79.0, 161.0, 0.01, 0.0, 0.01], 'Ranch dressing': ['15mL', 15.0, 71.0, 120.0, 0.01, 0.0, 1.0], 'Coffee': ['250mL', 256.0, 101.0, 79.0, 5.0, 9.0, 7.0], 'Tea': ['250mL', 250.0, 3.0, 8.0, 0.0, 0.0, 1.0], 'Ketchup': ['15mL', 15.0, 15.0, 169.0, 0.01, 3.0, 4.0], 'Mustard': ['15mL', 16.0, 11.0, 180.0, 1.0, 0.01, 1.0], 'Chocolate chip muffin': ['1', 113.0, 366.0, 341.0, 8.0, 16.0, 53.0], 'Granola bars': ['1', 26.0, 109.0, 90.0, 1.0, 6.0, 20.0], 'Apple pie': ['1/8th slice', 125.0, 411.0, 327.0, 4.0, 0.0, 58.0], 'Pumpkin pie': ['1/6th slice', 109.0, 229.0, 307.0, 4.0, 15.0, 30.0]}
+var age; 
+var height; 
+var weight; 
+var idealWeight; 
+var timeframe; 
+var activity;
+var gender;
+var calIntakeGoal;
 
 // FUNCTIONS
-function start() {
-   //please do weight in pounds and height in cm
-   var profile = document.getElementById("profile"); 
-   var height = document.getElementById("height").value;
-   var weight = document.getElementById("weight").value;
-   var idealWeight = document.getElementById("ideal").value;
-   var timeframe = document.getElementById("timeframe").value;
-   var activity = document.getElementById("activity").value;
-   var gender = document.getElementById("gender").value;
-   
-   //need to error check for these variable values
+function values() {
+   // Gets all values
+   var a = document.getElementById('age').value; 
+   var h = document.getElementById('height').value;
+   var w = document.getElementById('weight').value;
+   var iW = document.getElementById('ideal').value;
+   var t = document.getElementById('timeframe').value;
+   timeframe = parseInt(t);
+   var act = document.getElementById('activity').value;
+   activity = parseInt(act);
+   var g = document.getElementsByName('gender');
+   // Checks if a gender is selected
+   for (var i = 0; i < 2; i++) {
+      if (g[i].checked) {
+         gender = g[i];
+         document.getElementById('genderError').innerText = "";
+         break;
+      } else { 
+         document.getElementById('genderError').innerText = "Please select your gender!";
+      }
+   }
 
-   //switch case statement to set the pa coefficient used in the calories burned equation
+   // Checks if all input is valid
+   if (!Number.isInteger(parseInt(a)) || !Number.isInteger(parseInt(h)) || !Number.isInteger(parseInt(w)) || !Number.isInteger(parseInt(iW))) {
+      document.getElementById('intError').innerText = "Please input a valid value!"; 
+   } else {
+      document.getElementById('intError').innerText = ""; 
+      document.getElementById('ageError').innerText = "";
+      age = parseInt(a);
+      height = parseInt(h);
+      weight = parseInt(w);
+      idealWeight = parseInt(iW);
+   }
+
+   // Checks if input is "healthy"
+   // Sets the pa coefficient used in the calories burned equation
    switch(activity) {
       case 1:
         var pa = 1;
@@ -40,45 +194,148 @@ function start() {
          var pa = 1.25;
    }
 
-   //calories burned equations
-   //equations come from
-   //https://www.canada.ca/en/health-canada/services/food-nutrition/healthy-eating/dietary-reference-intakes/tables.html
+   // Calories burned equations
+   // Equations come from: https://www.canada.ca/en/health-canada/services/food-nutrition/healthy-eating/dietary-reference-intakes/tables.html
    if (gender == "male"){
-      var calBurned = int(662 - (9.53 * age) + pa * ((15.91 * weight / 2.20462) + (539.6 * height * 100)));
-   } else{
-      var calBurned = int(354 - (6.91 * age) + pa * ((9.36 * weight / 2.20462) + (726 * height * 100)));
+      var calBurned = (662 - (9.53 * age) + pa * ((15.91 * weight / 2.20462) + (539.6 * height * 100)));
+   } else {
+      var calBurned = (354 - (6.91 * age) + pa * ((9.36 * weight / 2.20462) + (726 * height * 100)));
    }
-   
-   var weightChange = (idealWeight - weight)
-   var poundsPerWeek = weightChange/timeframe
-   //3500 comes from average calories per pound
-   //calories that need to be consumed daily to achieve target weight
-   window.calIntakeGoal =  (-calBurned) + int((poundsPerWeek / 7) * 3500)
-   
+
+   var weightChange = (idealWeight - weight);
+   var poundsPerWeek = weightChange / timeframe;
+   console.log(poundsPerWeek);
+   if (poundsPerWeek <= -3 || poundsPerWeek >= 3) {
+      document.getElementById('healthError').innerText = "This exceeds the recommended pounds needed to be lost/gained per week, please note that this is an unhealthy weight loss goal!"
+   } else {
+      // 3500 comes from average calories per pound
+      calIntakeGoal =  (-calBurned) + ((poundsPerWeek / 7) * 3500);
+      document.getElementById('healthError').innerText = "";
+   }
 }
 
+// Loads data based on chosen tab
 function changeTab() {
-
-   test_dict = {"jack": [1, 2, 3, "img_src.jpg"]}
-
-   //example of what the for loop that will go through test dictionary data will look like
-   for(var foodName in test_dict) {
-   var stats = test_dict[key];
-   var calories = stats[0]
-   var sugar = stats[1]
-   var protein = stats[2]
-   var img = stats[3]
-
-   //this string contains the html for any food item container
-   var containerString = "<div class=\"foodItem\" id=\"" + foodName + ">" + foodContent + "</div>"
-   //then in the section where is says foodContent we will add the info for the food like: 
-   //  <h2> + calories + </h2> 
-   //  <p> + sugar + </p>
-   // <img> + img + </img>
-  
-   // now we just append the container html into the inner html of the fruits class
-   document.getElementById("fruits").appendChild(containerString)
-
+   // Resets directory to be empty first 
+   var directory = document.getElementById('directory');
+   while(directory.firstChild) {
+      directory.removeChild(directory.firstChild);
    }
-   
+
+   // Finds which dictionary to use
+   var category = event.target.innerText; 
+   switch(category) {
+      case "Fruits":
+         dictionary = fruits; 
+         break;
+      case "Vegetables":
+         dictionary = vegetables;
+         break;
+      case "Protein":
+         dictionary = protein;
+         break;
+      case "Dairy & Grains":
+         dictionary = dairyGrains;
+         break;
+      case "More":
+         dictionary = more;
+   }
+
+   // Loops through array and creates each container
+   var len = dictionary.length; 
+   for (var i = 0; i < len; i++) {
+      var name = dictionary[i].name;
+      var serving = dictionary[i].serving;
+      var weight = dictionary[i].weight;
+      var calories = dictionary[i].calories;
+      var sodium = dictionary[i].sodium;
+      var sugar = dictionary[i].sugar; 
+      var proteing = dictionary[i].proteing;
+      var carbs = dictionary[i].carbs;
+      var img = dictionary[i].img; 
+     
+      // Creates child elements in container
+      var nameNode = document.createElement('h3');
+      nameNode.innerText = name;
+
+      var servNode = document.createElement('p');
+      servNode.innerText = "Serving: " + serving;
+
+      var weightNode = document.createElement('p');
+      weightNode.innerText = "Weight: " + weight;
+
+      var imgNode = document.createElement('img');
+      imgNode.setAttribute('src', img);
+
+      var calNode = document.createElement('p');
+      calNode.innerText = "Calories: " + calories;
+
+      var sodiumNode = document.createElement('p');
+      sodiumNode.innerText = "Sodium: " + sodium;
+
+      var sugarNode = document.createElement('p');
+      sugarNode.innerText = "Sugar: " + sugar;
+
+      var proteinNode = document.createElement('p');
+      proteinNode.innerText = "Protein: " + proteing;
+
+      var carbsNode = document.createElement('p');
+      carbsNode.innerText = "Carbohydrates: " + carbs;
+     
+      // Creates container and appends children
+      var node = document.createElement('div');
+      node.append(nameNode, servNode, weightNode, imgNode, calNode, sodiumNode, sugarNode, proteinNode, carbsNode);
+      node.setAttribute('class', 'container');
+      node.setAttribute('onclick', 'check()');
+
+      // Adds container to directory
+      directory.appendChild(node);
+   }
+}
+
+// Toggles data in container elements on click (adds style, checked attribute and name)
+function check() {
+   var name = event.target.querySelector('h3').innerText;
+   var attrName = "data-name=\"" + name + "\""; 
+   event.target.toggleAttribute('checked');
+   event.target.classList.toggle('checked');
+   if (event.target.getAttribute('data-name') != null) {
+      event.target.removeAttribute('data-name');
+   } else {
+      event.target.setAttribute('data-name', name);
+   }
+}
+
+// Unchecks all
+function uncheck() {
+   var directory = document.getElementById('directory');
+   var len = directory.childElementCount;
+   console.log(len);
+   for (var i = 0; i < len; i++) {
+      console.log(directory.childNodes[i]);
+      if (directory.childNodes[i].getAttribute('checked') != null) {
+         directory.childNodes[i].removeAttribute('checked');
+         directory.childNodes[i].classList.remove('checked');
+      }
+   }
+
+}
+
+// Checks directory and adds all "checked" containers to a list
+function receipt() {
+   var len = document.getElementById('directory').childNodes.length;
+   var child = document.getElementById('directory').childNodes;
+   var list = document.getElementById('receiptItems');
+   for (var i = 0; i < len; i ++) {
+      if (child[i].getAttribute('checked') != null) {
+         var name = child[i].getAttribute('data-name');
+         list.innerHTML += "<li>" + name + "</li>";
+      }
+   }
+}
+
+// Resets checked directory
+function receiptReset() {
+   var list = document.getElementById('receiptItems');
+   list.innerHTML = "";
 }
