@@ -295,7 +295,7 @@ function changeTab() {
 
 // Toggles data in container elements on click (adds style, checked attribute and name)
 function check() {
-   var name = event.target.firstChild.innerText;
+   var name = event.target.querySelector('h3').innerText;
    var attrName = "data-name=\"" + name + "\""; 
    event.target.toggleAttribute('checked');
    event.target.classList.toggle('checked');
