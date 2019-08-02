@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Meal Plan</title>
 
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="./meal-script.js"></script>
 </head>
@@ -17,9 +18,11 @@
     <section id="profile">
         <h2>Build your profile</h2>
         <form action="">
-            <p>Gender</p>
-            <input type="radio" name="gender" id ="female" value="female"> Female
-            <input type="radio" name="gender" id ="male" value="male"> Male
+            <fieldset class="gender">
+                <input type="radio" name="gender" id ="female" value="female"> Female
+                <input type="radio" name="gender" id ="male" value="male"> Male
+            </fieldset>
+            
             <p>Age:</p>
             <input type="text" name="age" id="age">
             <p>Height(cm):</p>
@@ -58,11 +61,18 @@
     </section>
     <section id="receipt">
         <h2>Your Receipt</h2>
-        <div class="leftItems">
-            <ul id="receiptItems"></ul>
+        <div class="receiptItems">
+            <ul id="receiptFood">
+                <li>Qtn &emsp; Food Items</li>
+            </ul>
+            <ul id="receiptCal">
+                <li>Calories</li>
+            </ul>
+            
+            
+            
         </div>
-        <div class="rightCals">
-            <ul id="receiptInfo"></ul>
+        
         </div>
     </section>
    <footer>
