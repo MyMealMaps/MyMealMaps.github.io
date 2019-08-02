@@ -139,6 +139,7 @@ var timeframe;
 var activity;
 var gender;
 var calIntakeGoal;
+var receiptDict = {};
 
 // FUNCTIONS
 function values() {
@@ -205,11 +206,11 @@ function values() {
    var weightChange = (idealWeight - weight);
    var poundsPerWeek = weightChange / timeframe;
    console.log(poundsPerWeek);
-   if (poundsPerWeek <= -3 || poundsPerWeek >= 3) {
+   if (poundsPerWeek < -2 || poundsPerWeek > 2) {
       document.getElementById('healthError').innerText = "This exceeds the recommended pounds needed to be lost/gained per week, please note that this is an unhealthy weight loss goal!"
    } else {
       // 3500 comes from average calories per pound
-      calIntakeGoal =  (-calBurned) + ((poundsPerWeek / 7) * 3500);
+      calIntakeGoal =  (-calBurned) + int((poundsPerWeek / 7) * 3500);
       document.getElementById('healthError').innerText = "";
    }
 }
@@ -282,60 +283,112 @@ function changeTab() {
       var carbsNode = document.createElement('p');
       carbsNode.innerText = "Carbohydrates: " + carbs;
      
+      var addNode = document.createElement('button');
+      addNode.setAttribute('type', 'button');
+      addNode.setAttribute('onclick', "add(\'" + name + "\')");
+      addNode.innerText = "+";
+
+      var subtractNode = document.createElement('button');
+      subtractNode.setAttribute('type', 'button');
+      subtractNode.setAttribute('onclick', "subtract(\'" + name + "\')");
+      subtractNode.innerText = "-";
+
+      var quantityNode = document.createElement('h4')
+      if (name in receiptDict){
+         quantityNode.innerText = String(receiptDict[name])
+      }
+      else{
+         quantityNode.innerText = "0"
+      }
+      quantityNode.setAttribute("id", name)
+
+
+
       // Creates container and appends children
       var node = document.createElement('div');
-      node.append(nameNode, servNode, weightNode, imgNode, calNode, sodiumNode, sugarNode, proteinNode, carbsNode);
+      node.append(nameNode, servNode, weightNode, imgNode, calNode, sodiumNode, sugarNode, proteinNode, carbsNode, subtractNode, quantityNode, addNode);
       node.setAttribute('class', 'container');
-      node.setAttribute('onclick', 'check()');
 
       // Adds container to directory
       directory.appendChild(node);
    }
 }
 
-// Toggles data in container elements on click (adds style, checked attribute and name)
-function check() {
-   var name = event.target.querySelector('h3').innerText;
-   var attrName = "data-name=\"" + name + "\""; 
-   event.target.toggleAttribute('checked');
-   event.target.classList.toggle('checked');
-   if (event.target.getAttribute('data-name') != null) {
-      event.target.removeAttribute('data-name');
-   } else {
-      event.target.setAttribute('data-name', name);
+// Function adds to the total food count
+function add(food){
+   // Changes the container quantity display text
+   var quantity = document.getElementById(food);
+   var newQuantity = parseInt(quantity.innerHTML) + 1;
+   quantity.innerHTML = String(newQuantity);
+
+
+   if (food in receiptDict){
+      receiptDict[food] += 1;
+   } else{
+      receiptDict[food] = 1;
    }
 }
 
-// Unchecks all
-function uncheck() {
-   var directory = document.getElementById('directory');
-   var len = directory.childElementCount;
-   console.log(len);
-   for (var i = 0; i < len; i++) {
-      console.log(directory.childNodes[i]);
-      if (directory.childNodes[i].getAttribute('checked') != null) {
-         directory.childNodes[i].removeAttribute('checked');
-         directory.childNodes[i].classList.remove('checked');
+// Function adds to the total food count
+function subtract(food){
+   // Changes the container quantity display text
+   var quantity = document.getElementById(food);
+   var newQuantity = parseInt(quantity.innerHTML) - 1;
+   if (newQuantity < 0){
+      newQuantity = 0;
+    }
+   quantity.innerHTML = String(newQuantity);
+
+   if (food in receiptDict){
+      if (receiptDict[food] == 1){
+         delete receiptDict[food];
+      } else{
+         receiptDict[food] -= 1;
       }
-   }
-
+   }  
 }
 
-// Checks directory and adds all "checked" containers to a list
+// // Toggles data in container elements on click (adds style, checked attribute and name)
+// function check() {
+//    var name = event.target.querySelector('h3').innerText;
+//    var attrName = "data-name=\"" + name + "\""; 
+//    event.target.toggleAttribute('checked');
+//    event.target.classList.toggle('checked');
+//    if (event.target.getAttribute('data-name') != null) {
+//       event.target.removeAttribute('data-name');
+//    } else {
+//       event.target.setAttribute('data-name', name);
+//    }
+// }
+
+// // Unchecks all
+// function uncheck() {
+//    var directory = document.getElementById('directory');
+//    var len = directory.childElementCount;
+//    console.log(len);
+//    for (var i = 0; i < len; i++) {
+//       console.log(directory.childNodes[i]);
+//       if (directory.childNodes[i].getAttribute('checked') != null) {
+//          directory.childNodes[i].removeAttribute('checked');
+//          directory.childNodes[i].classList.remove('checked');
+//       }
+//    }
+//}
+
+// Generate receipt based on quantities in receiptDict
 function receipt() {
-   var len = document.getElementById('directory').childNodes.length;
-   var child = document.getElementById('directory').childNodes;
    var list = document.getElementById('receiptItems');
-   for (var i = 0; i < len; i ++) {
-      if (child[i].getAttribute('checked') != null) {
-         var name = child[i].getAttribute('data-name');
-         list.innerHTML += "<li>" + name + "</li>";
-      }
+   list.innerHTML = "";
+   for (foods in receiptDict){
+      alert
+      list.innerHTML += "<li>" + foods + " Quantity:" + String(receiptDict[foods]) + "</li>";
    }
 }
 
-// Resets checked directory
+// Resets receipt
 function receiptReset() {
    var list = document.getElementById('receiptItems');
    list.innerHTML = "";
+   receiptDict = {};
+   changeTab();
 }
