@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    font-family: 'Lato', sans-serif;
 }
 header {
     width: 100%;
@@ -17,26 +18,33 @@ header {
     background-color: antiquewhite;
     padding: 50px;
     margin: 0 auto;
+    text-align: center;
 }
 #btn {
-    margin: 20px 0;
+    margin: 20px auto;
     padding: 10px;
-    width: 100px;
+    width: 120px;
     background-color: #da7070;
     box-shadow: 0 5px 10px #888888;
+}
+h3#btn {
+    text-align: center;
 }
 #btn:hover {
     background-color: #a1e681;
     transition: 0.2s;
+    cursor: pointer;
 }
 #btn:active {
     box-shadow: none;
     transform: translateY(5px);
     transition: 0.2s;
 }
-
 #genderError, #intError, #ageError, #healthError {
     color: #da7070;
+}
+fieldset {
+    border: none;
 }
 
 #items {
@@ -86,7 +94,7 @@ header {
     box-shadow: 0px 5px 10px #7a3b3b;
 }
 #receipt {
-    height: 60vh;
+    min-height: 60vh;
     width: 70%;
     background-color: white;
     box-shadow: 10px 10px 20px #888888,
@@ -94,6 +102,20 @@ header {
     margin: 100px auto;
     padding: 50px;
     text-align: center;
+}
+.receiptItems {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: nowrap;
+}
+ul li{
+    list-style: none;
+    text-align: left;
+    margin-bottom: 10px;
+}
+#receiptFood {
+    margin-right: 60%;
+    min-width: 230px;
 }
 
 footer {
@@ -105,12 +127,19 @@ footer {
     .directory {
         padding: 50px;
     }
+    #receiptFood {
+        margin-right: 30%;
+    }
 }
 @media (max-width: 600px) {
     .tabs h2 {
         display: block;
     }
     #receipt {
-        margin-top: 150px;
+        margin-top: 250px;
+    }
+    #receiptFood {
+        margin-right: 0;
+        padding: 0;
     }
 }
