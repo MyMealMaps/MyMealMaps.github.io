@@ -239,12 +239,12 @@ function subtract(food) {
 function receipt() {
    var list = document.getElementById('receiptFood');
    var list_2 = document.getElementById('receiptCal');
-   list.innerHTML = "";
-   list_2.innerHTML = "";
+   list.innerHTML = "<li>Qtn &emsp; Food Items</li>";
+   list_2.innerHTML = "<li>Calories</li>";
    var calorieTotal = 0
    for (foods in receiptDict) {
       var quantity = receiptDict[foods]
-      list.innerHTML += "<li>" + String(quantity) + "    " + foods +  "</li>";
+      list.innerHTML += "<li>" + String(quantity)+ "    " + foods +  "</li>";
       if (foods in fruits){
          var data = fruits[foods];
       } else if (foods in vegetables) {
