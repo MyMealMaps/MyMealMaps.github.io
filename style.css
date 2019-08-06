@@ -79,6 +79,10 @@ fieldset {
     flex-wrap: wrap;
     overflow: scroll;
 }
+h4 {
+    display: inline;
+    margin: 10px;
+}
 .container {
     width: 250px;
     height: 300px;
@@ -89,6 +93,9 @@ fieldset {
 .container:hover { 
     cursor: pointer;
     box-shadow: 0px 5px 10px #7a3b3b;
+}
+#directory .container button {
+    display: inline;
 }
 .checked {
     box-shadow: 0px 5px 10px #7a3b3b;
