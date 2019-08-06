@@ -13,9 +13,6 @@ var protein = {'Fried eggs': ['2 large', 92.0, 173.0, 322.0, 12.0, 0.0, 2.0, 'im
 
 var more = {'Peanut butter': ['30mL', 32.0, 191.0, 158.0, 8.0, 3.0, 7.0, 'img.jpg'], 'Caesar dressing': ['15mL', 15.0, 79.0, 161.0, 0.01, 0.0, 0.01, 'img.jpg'], 'Ranch dressing': ['15mL', 15.0, 71.0, 120.0, 0.01, 0.0, 1.0, 'img.jpg'], 'Coffee': ['250mL', 256.0, 101.0, 79.0, 5.0, 9.0, 7.0, 'img.jpg'], 'Tea': ['250mL', 250.0, 3.0, 8.0, 0.0, 0.0, 1.0, 'img.jpg'], 'Ketchup': ['15mL', 15.0, 15.0, 169.0, 0.01, 3.0, 4.0, 'img.jpg'], 'Mustard': ['15mL', 16.0, 11.0, 180.0, 1.0, 0.01, 1.0, 'img.jpg'], 'Chocolate chip muffin': ['1', 113.0, 366.0, 341.0, 8.0, 16.0, 53.0, 'img.jpg'], 'Granola bars': ['1', 26.0, 109.0, 90.0, 1.0, 6.0, 20.0, 'img.jpg'], 'Apple pie': ['1/8th slice', 125.0, 411.0, 327.0, 4.0, 0.0, 58.0, 'img.jpg'], 'Pumpkin pie': ['1/6th slice', 109.0, 229.0, 307.0, 4.0, 15.0, 30.0, 'img.jpg']}
 
-
-
-
 var age;
 var height;
 var weight;
@@ -244,7 +241,7 @@ function receipt() {
    var calorieTotal = 0
    for (foods in receiptDict) {
       var quantity = receiptDict[foods]
-      list.innerHTML += "<li>" + String(quantity)+ "    " + foods +  "</li>";
+      list.innerHTML += "<li>" + String(quantity)+ "&emsp;&emsp;&nbsp;&nbsp; " + foods +  "</li>";
       if (foods in fruits){
          var data = fruits[foods];
       } else if (foods in vegetables) {
@@ -265,13 +262,15 @@ function receipt() {
 
    }
    //temporary alert, will change so total is displayed on receipt
-   alert("Your Calories Total is:" + String(calorieTotal))
+   alert("Your Calories Total is: " + String(calorieTotal))
 }
 
 // Resets receipt
 function receiptReset() {
-   var list = document.getElementById('receiptItems');
+   var list = document.getElementById('receiptFood');
+   var list_2 = document.getElementById('receiptCal');
    list.innerHTML = "";
+   list_2.innerHTML = "";
    receiptDict = {};
    changeTab();
 }
