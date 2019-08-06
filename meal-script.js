@@ -87,7 +87,6 @@ function values() {
 
    var weightChange = (idealWeight - weight);
    var poundsPerWeek = weightChange / timeframe;
-   console.log(poundsPerWeek);
    if (poundsPerWeek < -2 || poundsPerWeek > 2) {
       document.getElementById('healthError').innerText = "This exceeds the recommended pounds needed to be lost/gained per week, please note that this is an unhealthy weight loss goal!"
    } else {
