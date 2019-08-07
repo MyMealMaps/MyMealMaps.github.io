@@ -1,7 +1,9 @@
+/* Global */
 * {
     margin: 0;
     font-family: 'Lato', sans-serif;
 }
+/* h1 = Brand name, h2 = section titles, h3 = food names, h4 = quantities*/
 header {
     width: 100%;
     height: 35vh;
@@ -12,13 +14,15 @@ header {
     margin-bottom: 100px;
 }
 
+/* Build your profile */
 #profile { 
     width: 70%;
-    height: 50vh;
     background-color: antiquewhite;
     padding: 50px;
     margin: 0 auto;
     text-align: center;
+    overflow: hidden;
+    margin-bottom: 100px;
 }
 #btn {
     margin: 20px auto;
@@ -26,6 +30,7 @@ header {
     width: 120px;
     background-color: #da7070;
     box-shadow: 0 5px 10px #888888;
+    border-radius: 10px;
 }
 h3#btn {
     text-align: center;
@@ -47,31 +52,38 @@ fieldset {
     border: none;
 }
 
+#continue {
+    display: none;
+}
+/* Directory */
 #items {
     width: 100%;
     height: 100vh;
     margin-top: 100px;
 }
-
 .tabs {
     text-align: center;
 }
 .tabs h2 {
     display: inline;
-    margin: 0 10px;
+    padding: 10px 20px;
 }
 .tabs h2:hover {
     cursor: pointer;
-    background-color: #a1e681;
+    color: #da7070;
+    border-radius: 10px;
 }
 .tabs h2:focus {
     outline: 0;
-    background-color: #a1e681;
+    color: #da7070;
+    width: 150px;
+    background-color: antiquewhite;
+    box-shadow: 0 30px 1px antiquewhite;
+    border-radius: 10px 10px 0 0;
 }
-
 #directory {
     margin-top: 30px;
-    height: 80%;
+    height: 70%;
     background-color: antiquewhite;
     padding: 50px 80px;
     display: flex;
@@ -79,9 +91,18 @@ fieldset {
     flex-wrap: wrap;
     overflow: scroll;
 }
-h4 {
-    display: inline;
-    margin: 10px;
+.recBttns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.recBttns #btn {
+    margin: 30px 20px;
+}
+h4 { 
+    display: inline-block;
+    background-color: white;
+    padding: 1px 15px;
 }
 .container {
     width: 250px;
@@ -91,15 +112,34 @@ h4 {
     padding: 50px;
 }
 .container:hover { 
+    box-shadow: 0px 5px 10px #7a3b3b;
+}
+.container p:last-of-type {
+    margin-bottom: 20px;
+}
+.container button {
+    background-color: antiquewhite;
+    border: none;
+    padding: 4px 10px 1px 10px;
+}
+.container button:first-of-type {
+    border-radius: 10px 0 0 10px;
+}
+.container button:last-of-type {
+    border-radius: 0 10px 10px 0;
+}
+.container button:hover {
     cursor: pointer;
-    box-shadow: 0px 5px 10px #7a3b3b;
+    background-color: brown;
 }
-#directory .container button {
-    display: inline;
+.container button:active {
+    background-color: maroon;
 }
-.checked {
-    box-shadow: 0px 5px 10px #7a3b3b;
+.container button:focus {
+    outline: 0;
 }
+
+/* Receipt */
 #receipt {
     min-height: 60vh;
     width: 70%;
@@ -110,12 +150,13 @@ h4 {
     padding: 50px;
     text-align: center;
 }
+/* all receipt items */
 .receiptItems {
     margin: 20px 0;
     display: flex;
     flex-wrap: nowrap;
 }
-ul li{
+ul li {
     list-style: none;
     text-align: left;
     margin-bottom: 10px;
@@ -125,11 +166,13 @@ ul li{
     min-width: 230px;
 }
 
+/* Footer */
 footer {
     text-align: center;
     margin-bottom: 20px;
 }
 
+/* For smaller screens */
 @media (max-width: 1250px) {
     .directory {
         padding: 50px;
