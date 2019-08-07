@@ -87,12 +87,11 @@ function values() {
 
    var weightChange = (idealWeight - weight);
    var poundsPerWeek = weightChange / timeframe;
-   console.log(poundsPerWeek);
    if (poundsPerWeek < -2 || poundsPerWeek > 2) {
       document.getElementById('healthError').innerText = "This exceeds the recommended pounds needed to be lost/gained per week, please note that this is an unhealthy weight loss goal!"
    } else {
       // 3500 comes from average calories per pound
-      calIntakeGoal = (-calBurned) + int((poundsPerWeek / 7) * 3500);
+      calIntakeGoal = (-calBurned) + ((poundsPerWeek / 7) * 3500);
       document.getElementById('healthError').innerText = "";
    }
 }
@@ -185,11 +184,9 @@ function changeTab() {
       }
       quantityNode.setAttribute("id", name)
 
-
-
       // Creates container and appends children
       var node = document.createElement('div');
-      node.append(nameNode, servNode, weightNode, imgNode, calNode, sodiumNode, sugarNode, proteinNode, carbsNode, subtractNode, quantityNode, addNode);
+      node.append(nameNode, servNode, weightNode, imgNode, calNode, sodiumNode, sugarNode, proteinNode, carbsNode, addNode, quantityNode, subtractNode);
       node.setAttribute('class', 'container');
 
       // Adds container to directory
@@ -203,7 +200,6 @@ function add(food) {
    var quantity = document.getElementById(food);
    var newQuantity = parseInt(quantity.innerHTML) + 1;
    quantity.innerHTML = String(newQuantity);
-
 
    if (food in receiptDict) {
       receiptDict[food] += 1;
@@ -258,19 +254,20 @@ function receipt() {
       // Currently the calories will show up below the items because of the styling of our lists in html
       // But if we just style our lists to be left and right but on the same line then it will look proper
       list_2.innerHTML += "<li>" + String(data[2] * quantity) + "</li>"
-
-
    }
    //temporary alert, will change so total is displayed on receipt
-   alert("Your Calories Total is: " + String(calorieTotal))
+   var totalCal = document.getElementById('totalCal');
+   totalCal.innerHTML = "=============================================<br>" + "Total Calories: " + String(calorieTotal);
 }
 
 // Resets receipt
 function receiptReset() {
    var list = document.getElementById('receiptFood');
    var list_2 = document.getElementById('receiptCal');
+   var totalCal = document.getElementById('totalCal');
    list.innerHTML = "";
    list_2.innerHTML = "";
+   totalCal.innerHTML = "";
    receiptDict = {};
    changeTab();
 }
