@@ -3,19 +3,22 @@
     margin: 0;
     font-family: 'Lato', sans-serif;
 }
+
 /* h1 = Brand name, h2 = section titles, h3 = food names, h4 = quantities*/
+
 header {
     width: 100%;
     height: 35vh;
     background-color: #a1e681;
     text-align: center;
-    padding-top: 200px; 
+    padding-top: 200px;
     color: white;
     margin-bottom: 100px;
 }
 
+
 /* Build your profile */
-#profile { 
+#profile {
     width: 70%;
     background-color: antiquewhite;
     padding: 50px;
@@ -35,7 +38,7 @@ header {
 h3#btn {
     text-align: center;
 }
-#btn:hover {
+#btn:hover, #btn:focus {
     background-color: #a1e681;
     transition: 0.2s;
     cursor: pointer;
@@ -45,44 +48,53 @@ h3#btn {
     transform: translateY(5px);
     transition: 0.2s;
 }
-#genderError, #intError, #ageError, #healthError {
+#genderError,#intError,#ageError,#healthError {
     color: #da7070;
 }
 fieldset {
     border: none;
 }
 
-#continue {
+/* Everything after profile */
+/* #continue {
     display: none;
-}
+} */
+
 /* Directory */
 #items {
     width: 100%;
     height: 100vh;
     margin-top: 100px;
 }
-.tabs {
+.tabMenu {
     text-align: center;
 }
-.tabs h2 {
-    display: inline;
+.tabMenu .tab {
+    display: inline-block;
     padding: 10px 20px;
+    border: none;
+    width: 150px;
+    font-size: 1.25rem;
+    background-color: transparent;
+    font-weight: 700;
 }
-.tabs h2:hover {
+.tabMenu button:hover {
     cursor: pointer;
     color: #da7070;
     border-radius: 10px;
 }
-.tabs h2:focus {
+.tabMenu button:focus {
     outline: 0;
     color: #da7070;
-    width: 150px;
+}
+.tab.checked {
+    color: #da7070;
     background-color: antiquewhite;
-    box-shadow: 0 30px 1px antiquewhite;
+    box-shadow: 0 35px 1px antiquewhite;
     border-radius: 10px 10px 0 0;
 }
 #directory {
-    margin-top: 30px;
+    margin-top: 10px;
     height: 70%;
     background-color: antiquewhite;
     padding: 50px 80px;
@@ -99,20 +111,25 @@ fieldset {
 .recBttns #btn {
     margin: 30px 20px;
 }
-h4 { 
+h4 {
     display: inline-block;
     background-color: white;
     padding: 1px 15px;
 }
 .container {
     width: 250px;
-    height: 300px;
+    height: 375px;
     background-color: #da7070;
     margin: 10px;
     padding: 50px;
 }
-.container:hover { 
+.container:hover, .container:focus {
     box-shadow: 0px 5px 10px #7a3b3b;
+}
+.container img {
+    width: 250px;
+    height: 150px;
+    padding: 10px 0;
 }
 .container p:last-of-type {
     margin-bottom: 20px;
@@ -144,8 +161,7 @@ h4 {
     min-height: 60vh;
     width: 70%;
     background-color: white;
-    box-shadow: 10px 10px 20px #888888,
-                -10px 10px 20px #888888;
+    box-shadow: 10px 10px 20px #888888, -10px 10px 20px #888888;
     margin: 100px auto;
     padding: 50px;
     text-align: center;
