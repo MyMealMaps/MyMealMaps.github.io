@@ -119,8 +119,15 @@ function changeTab() {
       directory.removeChild(directory.firstChild);
    }
 
+   // Resets tab style 
+   var checkedTabs = document.getElementsByClassName('checked');
+   while(checkedTabs[0]) {
+      checkedTabs[0].classList.remove('checked');
+   }
+
    // Finds which dictionary to use
    var category = event.target.innerText;
+   event.target.classList.add('checked');
    var dictionary = "";
    switch (category) {
       case "Fruits":
@@ -161,25 +168,25 @@ function changeTab() {
       servNode.innerText = "Serving: " + serving;
 
       var weightNode = document.createElement('p');
-      weightNode.innerText = "Weight: " + weight;
+      weightNode.innerText = "Weight(g): " + weight;
 
       var imgNode = document.createElement('img');
       imgNode.setAttribute('src', img);
 
       var calNode = document.createElement('p');
-      calNode.innerText = "Calories: " + calories;
+      calNode.innerText = "Calories(kcal): " + calories;
 
       var sodiumNode = document.createElement('p');
-      sodiumNode.innerText = "Sodium: " + sodium;
+      sodiumNode.innerText = "Sodium(mg): " + sodium;
 
       var sugarNode = document.createElement('p');
-      sugarNode.innerText = "Sugar: " + sugar;
+      sugarNode.innerText = "Sugar(g): " + sugar;
 
       var proteinNode = document.createElement('p');
-      proteinNode.innerText = "Protein: " + proteing;
+      proteinNode.innerText = "Protein(g): " + proteing;
 
       var carbsNode = document.createElement('p');
-      carbsNode.innerText = "Carbohydrates: " + carbs;
+      carbsNode.innerText = "Carbohydrates(g): " + carbs;
 
       var addNode = document.createElement('button');
       addNode.setAttribute('type', 'button');
