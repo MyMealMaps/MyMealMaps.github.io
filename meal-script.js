@@ -211,6 +211,7 @@ function changeTab() {
       var node = document.createElement('div');
       node.append(nameNode, servNode, weightNode, imgNode, calNode, sodiumNode, sugarNode, proteinNode, carbsNode, addNode, quantityNode, subtractNode);
       node.setAttribute('class', 'container');
+      node.setAttribute('tabindex', '0');
 
       // Adds container to directory
       directory.appendChild(node);
