@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="./meal-script.js"></script>
 </head>
+
 <body>
     <header>
         <h1>My Meal Maps</h1>
@@ -17,12 +19,11 @@
     </header>
     <section id="profile">
         <h2>Build your profile</h2>
-        <form action="">
+        <form action="javascript:void(0);">
             <fieldset class="gender">
-                <input type="radio" name="gender" id ="female" value="female"> Female
-                <input type="radio" name="gender" id ="male" value="male"> Male
+                <input type="radio" name="gender" id="female" value="female"> Female
+                <input type="radio" name="gender" id="male" value="male"> Male
             </fieldset>
-            
             <p>Age:</p>
             <input type="text" name="age" id="age">
             <p>Height(cm):</p>
@@ -33,50 +34,50 @@
             <input type="text" name="ideal" id="ideal">
             <p>Timeframe:</p>
             <input type="range" name="timeframe" id="timeframe" value="50" min="0" max="100" oninput="timeOutput.value = timeframe.value">
-            <output  id="timeOutput"></output>
+            <output id="timeOutput"></output>
             <p>Activity Level:</p>
             <input type="range" name="activity" id="activity" value="2" min="1" max="4" oninput="activeOutput.value = activity.value">
-            <output  id="activeOutput"></output>
+            <output id="activeOutput"></output>
 
-            <h3 id="btn" onclick="values()">Get Started!</h3>
-
+            <button id="btn" onclick="values()" tabindex="0">Get Started!</button>
             <p id="genderError"></p>
             <p id="intError"></p>
-            <p id="ageError"></p>     
-            <p id="healthError"></p>       
+            <p id="ageError"></p>
+            <p id="healthError"></p>
         </form>
     </section>
-    <section id="items">
-        <div class="tabs">
-            <h2 onclick="changeTab()" tabindex="0">Fruits</h2>
-            <h2 onclick="changeTab()" tabindex="0">Vegetables</h2>
-            <h2 onclick="changeTab()" tabindex="0">Protein</h2>
-            <h2 onclick="changeTab()" tabindex="0">Dairy & Grains</h2>
-            <h2 onclick="changeTab()" tabindex="0">More</h2>
-        </div>
-        <div id="directory">
-        </div>
-        <button onclick="receipt()">Update Receipt</button>
-        <button onclick="receiptReset()">Reset</button>
-    </section>
-    <section id="receipt">
-        <h2>Your Receipt</h2>
-        <div class="receiptItems">
-            <ul id="receiptFood">
-                <li>Qtn &emsp; Food Items</li>
-            </ul>
-            <ul id="receiptCal">
-                <li>Calories</li>
-            </ul>
-            
-            
-            
-        </div>
-        
-        </div>
-    </section>
-   <footer>
+    <div id="continue">
+        <section id="items">
+            <div class="tabMenu">
+                <button class="tab" onclick="changeTab()" tabindex="0">Fruits</button>
+                <button class="tab" onclick="changeTab()" tabindex="0">Vegetables</button>
+                <button class="tab" onclick="changeTab()" tabindex="0">Protein</button>
+                <button class="tab" onclick="changeTab()" tabindex="0">Dairy & Grains</button>
+                <button class="tab" onclick="changeTab()" tabindex="0">More</button>
+            </div>
+            <div id="directory">
+            </div>
+            <div class="recBttns">
+                <h3 id="btn" onclick="receipt()" tabindex="0">Update</h3>
+                <h3 id="btn" onclick="receiptReset()" tabindex="0">Reset</h3>
+            </div>
+        </section>
+        <section id="receipt">
+            <h2>Your Receipt</h2>
+            <div class="receiptItems">
+                <ul id="receiptFood">
+                    <li>Qtn &emsp; Food Items</li>
+                </ul>
+                <ul id="receiptCal">
+                    <li>Calories</li>
+                </ul>
+            </div>
+            <p id="totalCal" tabindex="0"></p>
+        </section>
+    </div>
+    <footer tabindex="0">
         <small>&copy;2019 Project by Maggie Shan and Jack Liu</small>
-   </footer>
+    </footer>
 </body>
+
 </html>
