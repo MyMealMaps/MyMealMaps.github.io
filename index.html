@@ -19,12 +19,11 @@
     </header>
     <section id="profile">
         <h2>Build your profile</h2>
-        <form action="">
+        <form action="javascript:void(0);">
             <fieldset class="gender">
                 <input type="radio" name="gender" id="female" value="female"> Female
                 <input type="radio" name="gender" id="male" value="male"> Male
             </fieldset>
-
             <p>Age:</p>
             <input type="text" name="age" id="age">
             <p>Height(cm):</p>
@@ -40,8 +39,7 @@
             <input type="range" name="activity" id="activity" value="2" min="1" max="4" oninput="activeOutput.value = activity.value">
             <output id="activeOutput"></output>
 
-            <h3 id="btn" onclick="values()" tabindex="0">Get Started!</h3>
-
+            <button id="btn" onclick="values()" tabindex="0">Get Started!</button>
             <p id="genderError"></p>
             <p id="intError"></p>
             <p id="ageError"></p>
@@ -76,10 +74,10 @@
             </div>
             <p id="totalCal" tabindex="0"></p>
         </section>
-        <footer tabindex="0">
-            <small>&copy;2019 Project by Maggie Shan and Jack Liu</small>
-        </footer>
     </div>
+    <footer tabindex="0">
+        <small>&copy;2019 Project by Maggie Shan and Jack Liu</small>
+    </footer>
 </body>
 
 </html>
