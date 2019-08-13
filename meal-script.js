@@ -422,9 +422,13 @@ function receiptReset() {
    var list = document.getElementById('receiptFood');
    var list_2 = document.getElementById('receiptCal');
    var totalCal = document.getElementById('totalCal');
+   var recommendedCal = document.getElementById('recommendedCal');
+   var calResponse = document.getElementById('calResponse');
    list.innerHTML = "";
    list_2.innerHTML = "";
    totalCal.innerHTML = "";
+   recommendedCal.innerHTML = "";
+   calResponse.innerHTML = "";
    receiptDict = {};
    changeTab();
 }

@@ -72,14 +72,22 @@
                     <li>Calories</li>
                 </ul>
             </div>
-            <p id="totalCal" tabindex="0"></p>
-            <p id="recommendedCal" tabindex="0"></p>
-            <p id="calResponse" tabindex="0"></p>
+            <div tabindex="0">
+                <p id="totalCal"></p>
+                <p id="recommendedCal"></p>
+                <p id="calResponse"></p>
+            </div>
+        </section>
+        <section id="sendEmail">
+            <form action="sendmail.php">
+                <h2>Save your meal map:</h2>
+                <input type="text" name="email" id="email">
+                <input type="submit" value="Send">
+            </form>
         </section>
     </div>
     <footer tabindex="0">
         <small>&copy;2019 Project by Maggie Shan and Jack Liu</small>
     </footer>
 </body>
-
 </html>
