@@ -21,7 +21,7 @@ var vegetables = {
    'Kale': ['125mL', 69.0, 19.0, 16.0, 1.0, 1.0, 4.0, './img/Kale.jpg'],
    'Leek': ['125mL', 55.0, 17.0, 5.0, 0.01, 0.0, 4.0, './img/Leek.jpg'],
    'Iceberg lettuce': ['250mL', 58.0, 8.0, 6.0, 1.0, 1.0, 2.0, './img/Iceberg.jpg'],
-   'Romain lettuce': ['250mL', 59.0, 10.0, 5.0, 1.0, 1.0, 2.0, './img/Romain.jpg'],
+   'Romaine lettuce': ['250mL', 59.0, 10.0, 5.0, 1.0, 1.0, 2.0, './img/Romaine.jpg'],
    'Mushrooms': ['3 medium', 54.0, 12.0, 2.0, 2.0, 1.0, 2.0, './img/Mushrooms.jpg'],
    'Green onions': ['1 medium', 15.0, 5.0, 2.0, 0.01, 0.01, 1.0, './img/Greenonions.jpg'],
    'Green peas': ['125mL', 85.0, 66.0, 61.0, 4.0, 4.0, 12.0, './img/Greenpeas.jpg'],
@@ -141,7 +141,6 @@ var activity;
 var gender;
 var calIntakeGoal;
 var receiptDict = {};
-var weightChange;
 
 // FUNCTIONS
 function values() {
@@ -202,17 +201,17 @@ function values() {
    // Calories burned equations
    // Equations come from: https://www.canada.ca/en/health-canada/services/food-nutrition/healthy-eating/dietary-reference-intakes/tables.html
    if (gender == "male") {
-      var calBurned = (662 - (9.53 * age) + pa * ((15.91 * weight / 2.20462) + (539.6 * height / 100)));
+      var calBurned = (662 - (9.53 * age) + pa * ((15.91 * weight / 2.20462) + (539.6 * height * 100)));
    } else {
-      var calBurned = (354 - (6.91 * age) + pa * ((9.36 * weight / 2.20462) + (726 * height / 100)));
+      var calBurned = (354 - (6.91 * age) + pa * ((9.36 * weight / 2.20462) + (726 * height * 100)));
    }
-   weightChange = (idealWeight - weight);
+   var weightChange = (idealWeight - weight);
    var poundsPerWeek = weightChange / timeframe;
    if (poundsPerWeek < -2 || poundsPerWeek > 2) {
       document.getElementById('healthError').innerText = "This exceeds the recommended pounds needed to be lost/gained per week, please note that this is an unhealthy weight loss goal!"
    } else {
       // 3500 comes from average calories per pound
-      calIntakeGoal = (Math.round((calBurned) + ((poundsPerWeek / 7) * 3500)));
+      calIntakeGoal = (-calBurned) + ((poundsPerWeek / 7) * 3500);
       document.getElementById('healthError').innerText = "";
       valid++;
    }
@@ -387,34 +386,13 @@ function receipt() {
       }
 
       calorieTotal += data[2] * quantity
-
+      // Currently the calories will show up below the items because of the styling of our lists in html
+      // But if we just style our lists to be left and right but on the same line then it will look proper
       list_2.innerHTML += "<li>" + String(data[2] * quantity) + "</li>"
    }
    // Prints total calories
    var totalCal = document.getElementById('totalCal');
    totalCal.innerHTML = "=============================================<br>" + "Total Calories: " + String(calorieTotal);
-
-   var recommendCal = document.getElementById('recommendedCal');
-   recommendCal.innerHTML = "Calorie Intake Goal: " + String(calIntakeGoal);
-
-   var calResponse = document.getElementById('calResponse');
-   if (weightChange > 0){
-      if (calIntakeGoal <= calorieTotal) {
-         calResponse.innerHTML = "Nice Work! This Meal Map has achieved your target Calorie Goal!";
-      }
-      else{
-         calResponse.innerHTML = "You're a bit short of what you need to consume. Try adding a few more things to your receipt!";
-      }
-   } else {
-      if (calIntakeGoal >= calorieTotal){
-         calResponse.innerHTML = "Nice Work This Meal Map has acheived your target Calorie Goal!";
-      }
-      else{
-         calResponse.innerHTML = "You're a bit above your consumption goals. Try cutting out small things from your receipt.";
-      }
-
-   }
-      
 }
 
 // Resets receipt

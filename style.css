@@ -134,7 +134,8 @@ fieldset {
 h4 {
     display: inline-block;
     background-color: white;
-    padding: 1px 15px;
+    padding: 0 15px;
+    height: 20px;
 }
 .container {
     width: 250px;
@@ -160,8 +161,9 @@ h4 {
 }
 .container button {
     background-color: antiquewhite;
-    border: none;
-    padding: 4px 10px 1px 10px;
+    border: 3px solid antiquewhite;
+    padding: 0 10px;
+    height: 20px;
 }
 .container button:first-of-type {
     border-radius: 10px 0 0 10px;
@@ -173,9 +175,11 @@ h4 {
     outline: 0;
     cursor: pointer;
     background-color: brown;
+    border: 3px solid brown;
 }
 .container button:active {
     background-color: maroon;
+    border: 3px solid maroon;
 }
 .container button:focus {
     outline: 0;
