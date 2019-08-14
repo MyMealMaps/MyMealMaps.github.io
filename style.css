@@ -76,9 +76,9 @@ fieldset {
 }
 
 /* Everything after profile */
-/* #continue {
+#continue {
     display: none;
-} */
+}
 
 /* Directory */
 #items {
