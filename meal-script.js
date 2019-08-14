@@ -392,25 +392,28 @@ function receipt() {
    }
    // Prints total calories
    var totalCal = document.getElementById('totalCal');
-   totalCal.innerHTML = "=============================================<br>" + "Total Calories: " + String(calorieTotal);
+   totalCal.innerHTML = "========================<br>" + "Total Calories: " + String(calorieTotal);
 
    var recommendCal = document.getElementById('recommendedCal');
-   recommendCal.innerHTML = "Calorie Intake Goal: " + String(calIntakeGoal);
+   recommendCal.innerHTML = " / " + String(calIntakeGoal) + " goal";
 
    var calResponse = document.getElementById('calResponse');
-   if (weightChange > 0){
-      if (calIntakeGoal <= calorieTotal) {
+   console.log(weightChange);
+   if (weightChange < 0){
+      if ((calIntakeGoal - 100 <= calorieTotal) && (calorieTotal <= calIntakeGoal)) {
          calResponse.innerHTML = "Nice Work! This Meal Map has achieved your target Calorie Goal!";
-      }
-      else{
+      } else if (calorieTotal < calIntakeGoal) {
          calResponse.innerHTML = "You're a bit short of what you need to consume. Try adding a few more things to your receipt!";
+      } else {
+         calResponse.innerHTML = "You're a bit above your consumption goals. Try cutting out small things from your receipt.";
       }
    } else {
-      if (calIntakeGoal >= calorieTotal){
+      if ((calIntakeGoal + 100 >= calorieTotal) && (calorieTotal >= calIntakeGoal)) {
          calResponse.innerHTML = "Nice Work This Meal Map has acheived your target Calorie Goal!";
-      }
-      else{
+      } else if (calorieTotal > calIntakeGoal) {
          calResponse.innerHTML = "You're a bit above your consumption goals. Try cutting out small things from your receipt.";
+      } else {
+         calResponse.innerHTML = "You're a bit short of what you need to consume. Try adding a few more things to your receipt!";
       }
 
    }

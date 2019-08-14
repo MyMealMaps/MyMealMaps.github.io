@@ -38,11 +38,11 @@ input[type=text]:focus {
     border: none;
     border: 2px solid #A5A5A5;
 }
-#profile #btn {
+#profile .btn {
     width: 200px;
     margin-top: 20px;
 }
-#btn {
+.btn {
     border: none;
     display: block;
     margin: 20px auto;
@@ -54,16 +54,16 @@ input[type=text]:focus {
     font-size: 1.1rem;
     font-weight: 700;
 }
-h3#btn {
+h3.btn {
     text-align: center;
 }
-#btn:hover, #btn:focus {
+.btn:hover, .btn:focus {
     outline: 0;
     background-color: #a1e681;
     transition: 0.2s;
     cursor: pointer;
 }
-#btn:active {
+.btn:active {
     box-shadow: none;
     transform: translateY(5px);
     transition: 0.2s;
@@ -76,9 +76,9 @@ fieldset {
 }
 
 /* Everything after profile */
-#continue {
+/* #continue {
     display: none;
-}
+} */
 
 /* Directory */
 #items {
@@ -128,7 +128,7 @@ fieldset {
     align-items: center;
     justify-content: center;
 }
-.recBttns #btn {
+.recBttns .btn {
     margin: 30px 20px;
 }
 h4 {
@@ -210,7 +210,48 @@ ul li {
     margin-right: 60%;
     min-width: 230px;
 }
+#totalCal {
+    display: inline;
+    font-size: 1.5rem;
+}
+#recommendedCal {
+    display: inline;
+    font-size: 1.5rem;
+    color: #da7070;
+    font-weight: 700;
+}
+#calResponse {
+    max-width: 300px;
+    text-align: center;
+    margin: 10px auto;
+}
 
+/* Email */
+#sendEmail {
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    background-color: antiquewhite;
+    width: 70vw;
+    padding: 20px;
+    border-radius: 70px;
+}
+.send { 
+    font-size: 1rem;
+    width: 70px;
+    display: inline;
+    border: none;
+    background-color: #da7070;
+    border-radius: 15px;
+    padding: 3px;
+}
+.send:hover, .send:focus {
+    background-color: brown;
+    outline: 0;
+}
+.send:active {
+    background-color: maroon;
+}
 /* Footer */
 footer {
     text-align: center;
