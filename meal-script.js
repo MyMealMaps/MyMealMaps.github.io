@@ -85,7 +85,6 @@ var dairyGrains = {
 var protein = {
    'Fried eggs': ['2 large', 92.0, 173.0, 322.0, 12.0, 0.0, 2.0, './img/Friedeggs.jpg'],
    'Hard-boiled eggs': ['1 large', 50.0, 78.0, 62.0, 6.0, 0.0, 1.0, './img/Hardboiled.jpg'],
-   'Egg yolk - Cooked': ['1 large', 17.0, 59.0, 34.0, 3.0, 0.0, 1.0, './img/Eggyolk.jpg'],
    'Scrambled eggs': ['2 eggs', 124.0, 189.0, 476.0, 13.0, 0.0, 4.0, './img/Scrambled.jpg'],
    'Salmon': ['75g', 75.0, 155.0, 46.0, 17.0, 0.0, 0.0, './img/Salmon.jpg'],
    'Rainbow trout': ['75g', 75.0, 127.0, 32.0, 18.0, 0.0, 0.0, './img/trout.jpg'],
@@ -98,7 +97,6 @@ var protein = {
    'Striploin steak': ['75g', 75.0, 191.0, 43.0, 23.0, 0.0, 0.0, './img/Striploin.jpg'],
    'T-Bone steak': ['75g', 75.0, 216.0, 51.0, 22.0, 0.0, 0.0, './img/TBone.jpg'],
    'Tenderloin steak': ['75g', 75.0, 170.0, 50.0, 24.0, 0.0, 0.0, './img/Tenderloin.jpg'],
-   'Sirloin steak': ['75g', 75.0, 146.0, 43.0, 21.0, 0.0, 0.0, './img/Sirloin.jpg'],
    'Pork': ['75g', 75.0, 201.8, 54.8, 20.3, 0.0, 0.0, './img/Pork.jpg'],
    'Lamb': ['75g', 75.0, 209.1, 45.9, 18.5, 0.0, 0.0, './img/Lamb.jpg'],
    'Chicken breast': ['75g', 75.0, 119.0, 56.0, 25.0, 0.0, 0.0, './img/breast.jpg'],
@@ -268,8 +266,8 @@ function changeTab() {
       var weight = foodData[1];
       var calories = foodData[2];
       var sodium = foodData[3];
-      var sugar = foodData[4];
-      var proteing = foodData[5];
+      var sugar = foodData[5];
+      var proteing = foodData[4];
       var carbs = foodData[6];
       var img = foodData[7];
 
